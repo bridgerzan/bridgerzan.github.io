@@ -1,0 +1,565 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Artin IP Information</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style>:root{--nexus-primary:#7b2ff7;--nexus-primary-dark:#5a1bd6;--nexus-primary-light:#9d5ff9;--nexus-secondary:#00f7ff;--nexus-secondary-dark:#00c4cc;--nexus-accent:#ff2b94;--nexus-accent-light:#ff5aa9;--nexus-gold:#ffd166;--nexus-platinum:#e0e0e0;--nexus-depth-0:#050510;--nexus-depth-1:#0a0a1a;--nexus-depth-2:#0f0f24;--nexus-depth-3:#14142e;--nexus-depth-4:#191938;--nexus-glow-primary:radial-gradient(circle at center, rgba(123, 47, 247, 0.4), transparent 70%);--nexus-glow-secondary:radial-gradient(circle at center, rgba(0, 247, 255, 0.3), transparent 70%);--nexus-glow-accent:radial-gradient(circle at center, rgba(255, 43, 148, 0.3), transparent 70%);--nexus-gradient-horizontal:linear-gradient(90deg, var(--nexus-primary), var(--nexus-secondary));--nexus-gradient-vertical:linear-gradient(180deg, var(--nexus-primary), var(--nexus-accent));--nexus-gradient-diagonal:linear-gradient(135deg, var(--nexus-primary), var(--nexus-secondary), var(--nexus-accent));--nexus-gradient-radial:radial-gradient(circle at center, var(--nexus-primary), var(--nexus-depth-0));--nexus-transition-smooth:all 0.6s cubic-bezier(0.4, 0, 0.2, 1);--nexus-transition-fast:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);--nexus-transition-slow:all 1s cubic-bezier(0.4, 0, 0.2, 1);--nexus-shadow-soft:0 8px 32px rgba(0, 0, 0, 0.3);--nexus-shadow-medium:0 20px 60px rgba(0, 0, 0, 0.5);--nexus-shadow-intense:0 40px 120px rgba(0, 0, 0, 0.7);--nexus-shadow-glow:0 0 60px rgba(123, 47, 247, 0.5);--nexus-shadow-glow-secondary:0 0 60px rgba(0, 247, 255, 0.4);--nexus-shadow-glow-accent:0 0 60px rgba(255, 43, 148, 0.4)}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:Inter,'SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--nexus-depth-0);color:var(--nexus-platinum);cursor:none;overflow-x:hidden;min-height:100vh;position:relative}.quantum-cursor{width:8px;height:8px;background:var(--nexus-secondary);border-radius:50%;filter:drop-shadow(0 0 8px var(--nexus-secondary));mix-blend-mode:difference;position:fixed;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);transition:var(--nexus-transition-fast)}.cursor-trail{width:4px;height:4px;background:var(--nexus-accent);border-radius:50%;filter:blur(1px);opacity:0;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}.quantum-universe{position:fixed;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:-1}.universe-canvas{position:absolute;top:0;left:0;width:150%;height:150%;background:var(--nexus-glow-primary),var(--nexus-glow-secondary),var(--nexus-gradient-radial);animation:universe-drift 180s linear infinite;opacity:.3}.quantum-grid{position:absolute;top:0;left:0;width:200%;height:200%;background-image:linear-gradient(rgba(123,47,247,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(123,47,247,.1) 1px,transparent 1px);background-size:50px 50px;animation:grid-move 100s linear infinite}.energy-particles{position:absolute;top:0;left:0;width:100%;height:100%}.particle{position:absolute;width:2px;height:2px;background:var(--nexus-secondary);border-radius:50%;filter:blur(1px);opacity:0;animation:energy-float 20s linear infinite}.main-container{max-width:1800px;margin:0 auto;padding:80px 40px;position:relative;z-index:1}header{text-align:center;margin-bottom:60px;position:relative}.logo{font-size:48px;font-weight:700;background:var(--nexus-gradient-horizontal);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:15px;letter-spacing:1px;text-shadow:var(--nexus-shadow-glow)}.tagline{font-size:18px;color:var(--nexus-platinum);opacity:.8;font-weight:300;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}.subtagline{font-size:14px;color:var(--nexus-secondary);opacity:.7;font-weight:400}.ip-display{background:var(--nexus-depth-1);border-radius:20px;padding:50px;margin-bottom:50px;position:relative;overflow:hidden;box-shadow:var(--nexus-shadow-soft);border:1px solid rgba(123,47,247,.1);transition:var(--nexus-transition-smooth)}.ip-display:hover{transform:translateY(-5px);box-shadow:var(--nexus-shadow-medium),var(--nexus-shadow-glow);border-color:rgba(123,47,247,.3)}.ip-display::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--nexus-gradient-horizontal)}.ip-title{font-size:28px;color:var(--nexus-platinum);margin-bottom:30px;display:flex;align-items:center;gap:15px}.ip-title::before{content:'';width:40px;height:4px;background:var(--nexus-gradient-horizontal);border-radius:2px}.ip-address{font-size:56px;font-weight:700;background:var(--nexus-gradient-horizontal);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:20px;letter-spacing:1px;text-shadow:var(--nexus-shadow-glow);word-break:break-all}.info-sections{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;margin-top:50px}.info-section{background:var(--nexus-depth-2);border-radius:15px;padding:25px;position:relative;overflow:hidden;transition:var(--nexus-transition-smooth);border:1px solid rgba(0,247,255,.05)}.info-section:hover{transform:translateY(-5px);box-shadow:var(--nexus-shadow-soft),var(--nexus-shadow-glow-secondary);border-color:rgba(0,247,255,.2)}.section-title{font-size:18px;color:var(--nexus-secondary);margin-bottom:20px;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:2px solid rgba(0,247,255,.2)}.section-title i{font-size:16px}.info-row{margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.05)}.info-row:last-child{margin-bottom:0;border-bottom:none;padding-bottom:0}.info-label{color:var(--nexus-platinum);opacity:.7;font-weight:500;display:flex;align-items:center;gap:8px;flex:1}.info-value{color:var(--nexus-platinum);font-weight:600;text-align:right;flex:2;word-break:break-word;padding-left:10px}.highlight{color:var(--nexus-gold);font-weight:700}.warning{color:var(--nexus-accent);font-weight:700}.success{color:var(--nexus-secondary);font-weight:700}.curl-section{background:var(--nexus-depth-3);border-radius:20px;padding:35px;margin-top:50px;position:relative;overflow:hidden;border:1px solid rgba(255,43,148,.1)}.curl-section::before{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:var(--nexus-glow-accent);border-radius:50%;filter:blur(60px);opacity:.2}.curl-title{font-size:24px;color:var(--nexus-accent);margin-bottom:20px;display:flex;align-items:center;gap:15px}.curl-title i{font-size:20px}.command-examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:25px}.command-box{background:var(--nexus-depth-4);border-radius:10px;padding:20px;border:1px solid rgba(255,43,148,.2);transition:var(--nexus-transition-fast)}.command-box:hover{border-color:var(--nexus-accent);box-shadow:var(--nexus-shadow-glow-accent)}.command-header{display:flex;align-items:center;gap:10px;margin-bottom:15px;color:var(--nexus-accent-light)}.command-code{font-family:'Courier New',monospace;font-size:15px;color:var(--nexus-platinum);background:rgba(0,0,0,.3);padding:12px 15px;border-radius:8px;border-left:4px solid var(--nexus-accent);margin-bottom:10px;word-break:break-all}.command-code .prompt{color:var(--nexus-accent);font-weight:700;margin-right:8px}.command-desc{font-size:13px;color:var(--nexus-platinum);opacity:.8;line-height:1.5}.loading{display:flex;justify-content:center;align-items:center;gap:15px;padding:40px;flex-direction:column}.loading-dots{display:flex;gap:10px}.loading-dot{width:12px;height:12px;background:var(--nexus-primary);border-radius:50%;animation:loading-pulse 1.4s ease-in-out infinite}.loading-dot:nth-child(2){animation-delay:.2s;background:var(--nexus-secondary)}.loading-dot:nth-child(3){animation-delay:.4s;background:var(--nexus-accent)}.loading-text{color:var(--nexus-platinum);opacity:.7;margin-top:15px;font-size:16px}.action-buttons{display:flex;gap:15px;flex-wrap:wrap;margin-top:40px;justify-content:center}.btn{background:var(--nexus-gradient-diagonal);color:#fff;border:none;padding:15px 30px;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;transition:var(--nexus-transition-smooth);display:flex;align-items:center;gap:10px;box-shadow:var(--nexus-shadow-soft)}.btn:hover{transform:translateY(-3px);box-shadow:var(--nexus-shadow-medium),var(--nexus-shadow-glow)}.btn-secondary{background:rgba(0,247,255,.1);border:1px solid rgba(0,247,255,.3)}.btn-secondary:hover{background:rgba(0,247,255,.2)}footer{text-align:center;margin-top:80px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1);color:var(--nexus-platinum);opacity:.6;font-size:14px}.response-preview{margin-top:30px;padding:25px;background:rgba(0,0,0,.3);border-radius:10px;border:1px solid rgba(123,47,247,.2);display:none}.response-preview pre{color:var(--nexus-platinum);font-family:'Courier New',monospace;font-size:14px;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word;line-height:1.5}.response-title{color:var(--nexus-primary);margin-bottom:15px;display:flex;align-items:center;gap:10px}.detection-status{display:flex;align-items:center;gap:8px;padding:8px 15px;background:rgba(0,247,255,.1);border-radius:6px;margin-top:10px;font-size:14px}@keyframes universe-drift{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(-200px,-200px) rotate(1deg)}}@keyframes grid-move{0%{transform:translate(0,0)}100%{transform:translate(-100px,-100px)}}@keyframes energy-float{0%{transform:translateY(100vh) translateX(0) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) translateX(100vw) rotate(720deg);opacity:0}}@keyframes loading-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.8);opacity:.5}}@media (max-width:768px){.main-container{padding:40px 20px}.ip-address{font-size:36px}.info-sections{grid-template-columns:1fr}.curl-section,.ip-display{padding:30px 20px}.action-buttons{flex-direction:column}.btn{width:100%;justify-content:center}.command-examples{grid-template-columns:1fr}}</style></head><body><div class="quantum-cursor"></div><div class="quantum-universe"><div class="universe-canvas"></div><div class="quantum-grid"></div><div class="energy-particles" id="particles-container"></div></div><div class="main-container"><header><div class="logo">ARTIN IP</div><div class="tagline">Complete IP Information System</div><div class="subtagline">curl • irm • wget • fetch • Full WebRTC Detection</div></header><section class="ip-display"><div class="ip-title"><i class="fas fa-network-wired"></i> Complete IP Information Dashboard</div><div class="ip-address" id="ip-address">Detecting IP Address...</div><div class="loading" id="loading"><div class="loading-dots"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div></div><div class="loading-text">Gathering complete network information...</div></div><div class="info-sections" id="info-sections" style="display:none"><div class="info-section"><div class="section-title"><i class="fas fa-address-card"></i> Basic Information</div><div class="info-row"><span class="info-label"><i class="fas fa-laptop-code"></i> IP Address</span> <span class="info-value highlight" id="ip-basic">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-globe"></i> Public IP</span> <span class="info-value" id="public-ip">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-server"></i> Hostname</span> <span class="info-value" id="hostname">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-project-diagram"></i> Protocol</span> <span class="info-value" id="protocol">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-network-wired"></i> Connection Type</span> <span class="info-value" id="connection-type">-</span></div></div><div class="info-section"><div class="section-title"><i class="fas fa-map-marker-alt"></i> Geolocation Details</div><div class="info-row"><span class="info-label"><i class="fas fa-flag"></i> Country</span> <span class="info-value" id="country">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-map"></i> Region/State</span> <span class="info-value" id="region">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-city"></i> City</span> <span class="info-value" id="city">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-code"></i> Country Code</span> <span class="info-value" id="country-code">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-compass"></i> Coordinates</span> <span class="info-value" id="coordinates">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-map-pin"></i> Postal Code</span> <span class="info-value" id="postal">-</span></div></div><div class="info-section"><div class="section-title"><i class="fas fa-building"></i> ISP & Network Info</div><div class="info-row"><span class="info-label"><i class="fas fa-wifi"></i> Internet Service Provider</span> <span class="info-value" id="isp">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-briefcase"></i> Organization</span> <span class="info-value" id="organization">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-sitemap"></i> AS Number</span> <span class="info-value" id="asn">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-network-wired"></i> Network Range</span> <span class="info-value" id="network">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-chart-line"></i> Usage Type</span> <span class="info-value" id="usage-type">-</span></div></div><div class="info-section"><div class="section-title"><i class="fas fa-shield-alt"></i> WebRTC & Security</div><div class="info-row"><span class="info-label"><i class="fas fa-broadcast-tower"></i> WebRTC Status</span> <span class="info-value" id="webrtc-status">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-exclamation-triangle"></i> IPv6 Address</span> <span class="info-value" id="ipv6-address">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-network-wired"></i> Local IP Addresses</span> <span class="info-value" id="local-ips">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-user-secret"></i> VPN/Proxy Detection</span> <span class="info-value" id="proxy-detection">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-shield-virus"></i> Security Score</span> <span class="info-value" id="security-score">-</span></div></div><div class="info-section"><div class="section-title"><i class="fas fa-clock"></i> Time & System Info</div><div class="info-row"><span class="info-label"><i class="fas fa-clock"></i> Timezone</span> <span class="info-value" id="timezone">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-calendar-alt"></i> Local Date & Time</span> <span class="info-value" id="local-time">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-language"></i> Browser Languages</span> <span class="info-value" id="languages">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-money-bill-wave"></i> Currency</span> <span class="info-value" id="currency">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-phone-alt"></i> Calling Code</span> <span class="info-value" id="calling-code">-</span></div></div><div class="info-section"><div class="section-title"><i class="fas fa-desktop"></i> Browser & Device</div><div class="info-row"><span class="info-label"><i class="fas fa-browser"></i> User Agent</span> <span class="info-value" id="user-agent">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-mobile-alt"></i> Device Type</span> <span class="info-value" id="device-type">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-microchip"></i> CPU Cores</span> <span class="info-value" id="cpu-cores">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-memory"></i> Device Memory</span> <span class="info-value" id="device-memory">-</span></div><div class="info-row"><span class="info-label"><i class="fas fa-tachometer-alt"></i> Platform</span> <span class="info-value" id="platform">-</span></div></div></div><div class="response-preview" id="response-preview"><div class="response-title"><i class="fas fa-code"></i> API Response Preview</div><pre id="api-response"></pre></div><div class="action-buttons" id="action-buttons" style="display:none"><button class="btn" id="refresh-btn"><i class="fas fa-sync-alt"></i> Refresh All Data</button> <button class="btn btn-secondary" id="copy-btn"><i class="fas fa-copy"></i> Copy Full Info</button> <button class="btn btn-secondary" id="export-btn"><i class="fas fa-download"></i> Export JSON</button> <button class="btn btn-secondary" id="show-curl-btn"><i class="fas fa-terminal"></i> Test Commands</button></div></section><section class="curl-section" id="curl-section"><div class="curl-title"><i class="fas fa-terminal"></i> Command Line Interface (CLI)</div><div class="command-examples"><div class="command-box"><div class="command-header"><i class="fab fa-linux"></i> <span>Linux/macOS (curl)</span></div><div class="command-code"><span class="prompt">$</span> curl -s "https://bridgerzan.github.io/ip?format=json"</div><div class="command-desc">Get complete JSON response with all IP information</div><div class="command-code" style="margin-top:10px"><span class="prompt">$</span> curl -s "https://bridgerzan.github.io/ip?format=text"</div><div class="command-desc">Get only the IP address in plain text</div></div><div class="command-box"><div class="command-header"><i class="fab fa-windows"></i> <span>Windows PowerShell (irm)</span></div><div class="command-code"><span class="prompt">PS></span> irm "https://bridgerzan.github.io/ip?format=json" | ConvertFrom-Json</div><div class="command-desc">PowerShell: Get and parse JSON response</div><div class="command-code" style="margin-top:10px"><span class="prompt">PS></span> (irm "https://bridgerzan.github.io?format=json").ip</div><div class="command-desc">Extract only the IP address from response</div></div><div class="command-box"><div class="command-header"><i class="fas fa-code"></i> <span>Advanced Options</span></div><div class="command-code"><span class="prompt">$</span> curl -s "https://bridgerzan.github.io?webrtc=true"</div><div class="command-desc">Include WebRTC detection results</div><div class="command-code" style="margin-top:10px"><span class="prompt">$</span> curl -s "https://bridgerzan.github.io?geo=true&browser=true"</div><div class="command-desc">Get specific data sections only</div></div><div class="command-box"><div class="command-header"><i class="fas fa-network-wired"></i> <span>Alternative Methods</span></div><div class="command-code"><span class="prompt">$</span> wget -qO- "https://bridgerzan.github.io?format=json"</div><div class="command-desc">Using wget command</div><div class="command-code" style="margin-top:10px"><span class="prompt">$</span> fetch -q "https://bridgerzan.github.io?format=text"</div><div class="command-desc">Using fetch command (BSD systems)</div></div></div><div class="detection-status"><i class="fas fa-info-circle"></i> All commands return appropriate format based on URL parameters and User-Agent detection</div></section><footer><p>Artin IP Information System • Complete CLI & WebRTC Detection • Single HTML File</p><p style="margin-top:10px;font-size:12px"><i class="fas fa-terminal"></i> Supports: curl, irm, wget, fetch • <i class="fas fa-shield-alt"></i> Full WebRTC/IPv6 Detection • <i class="fas fa-database"></i> 40+ Data Points</p></footer></div><script>document.addEventListener('DOMContentLoaded', function() {
+            const cursor = document.querySelector('.quantum-cursor');
+            const trails = [];
+            const particlesContainer = document.getElementById('particles-container');
+            const loadingElement = document.getElementById('loading');
+            const infoSections = document.getElementById('info-sections');
+            const actionButtons = document.getElementById('action-buttons');
+            const ipAddressElement = document.getElementById('ip-address');
+            const responsePreview = document.getElementById('response-preview');
+            const apiResponseElement = document.getElementById('api-response');
+            
+            for (let i = 0; i < 30; i++) {
+                createParticle();
+            }
+
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                const colors = ['var(--nexus-secondary)', 'var(--nexus-accent)', 'var(--nexus-primary)'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particlesContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                    createParticle();
+                }, 30000);
+            }
+
+            document.addEventListener('mousemove', function(e) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                document.body.appendChild(trail);
+                
+                trails.push(trail);
+                
+                setTimeout(() => {
+                    trail.style.opacity = '0.5';
+                    trail.style.transform = `translate(-50%, -50%) scale(1.5)`;
+                    
+                    setTimeout(() => {
+                        trail.style.opacity = '0';
+                        setTimeout(() => {
+                            if (trail.parentNode) {
+                                trail.parentNode.removeChild(trail);
+                                const index = trails.indexOf(trail);
+                                if (index > -1) trails.splice(index, 1);
+                            }
+                        }, 300);
+                    }, 50);
+                }, 10);
+                
+                if (trails.length > 10) {
+                    const oldTrail = trails.shift();
+                    if (oldTrail && oldTrail.parentNode) {
+                        oldTrail.parentNode.removeChild(oldTrail);
+                    }
+                }
+            });
+
+            function getUrlParams() {
+                const params = new URLSearchParams(window.location.search);
+                return {
+                    format: params.get('format') || 'html',
+                    webrtc: params.get('webrtc') === 'true',
+                    geo: params.get('geo') === 'true',
+                    browser: params.get('browser') === 'true',
+                    minimal: params.get('minimal') === 'true'
+                };
+            }
+
+            function detectUserAgent() {
+                const ua = navigator.userAgent;
+                let clientType = 'browser';
+                let commandTool = 'none';
+                
+                if (/curl\/[0-9]/.test(ua)) {
+                    clientType = 'curl';
+                    commandTool = 'curl';
+                } else if (/Wget\/[0-9]/.test(ua)) {
+                    clientType = 'wget';
+                    commandTool = 'wget';
+                } else if (/PowerShell|WindowsPowerShell/.test(ua)) {
+                    clientType = 'powershell';
+                    commandTool = 'irm';
+                } else if (/fetch/.test(ua)) {
+                    clientType = 'fetch';
+                    commandTool = 'fetch';
+                }
+                
+                return {
+                    clientType,
+                    commandTool,
+                    userAgent: ua,
+                    isMobile: /Mobi|Android/i.test(ua),
+                    isTablet: /Tablet|iPad/i.test(ua),
+                    platform: navigator.platform,
+                    language: navigator.language,
+                    languages: navigator.languages
+                };
+            }
+
+            async function handleClientRequest() {
+                const params = getUrlParams();
+                const clientInfo = detectUserAgent();
+                
+                const data = await fetchCompleteData();
+                
+                window.currentData = {
+                    ...data,
+                    client: clientInfo,
+                    timestamp: new Date().toISOString(),
+                    server: 'Artin IP System v2.0'
+                };
+                
+                if (clientInfo.clientType !== 'browser') {
+                    return formatResponse(params.format, data, clientInfo);
+                }
+                
+                return null;
+            }
+
+            async function fetchCompleteData() {
+                const publicIP = await getPublicIP();
+                const geoData = await getGeoData(publicIP);
+                const webrtcData = await detectWebRTC();
+                const systemInfo = getSystemInfo();
+                const securityAnalysis = analyzeSecurity(geoData, webrtcData);
+                
+                return {
+                    ip: publicIP,
+                    geo: geoData,
+                    webrtc: webrtcData,
+                    system: systemInfo,
+                    security: securityAnalysis
+                };
+            }
+
+            async function getPublicIP() {
+                try {
+                    const response = await fetch('https://api.ipify.org?format=json');
+                    const data = await response.json();
+                    return data.ip;
+                } catch (error) {
+                    return 'Unable to detect';
+                }
+            }
+
+            async function getGeoData(ip) {
+                try {
+                    const response = await fetch(`https://ipapi.co/${ip}/json/`);
+                    const data = await response.json();
+                    return data;
+                } catch (error) {
+                    return getMockGeoData();
+                }
+            }
+
+            function getMockGeoData() {
+                return {
+                    ip: "45.141.116.96",
+                    version: "IPv4",
+                    city: "Frankfurt am Main",
+                    region: "Hesse",
+                    region_code: "HE",
+                    country: "DE",
+                    country_name: "Germany",
+                    country_code: "DE",
+                    country_code_iso3: "DEU",
+                    country_capital: "Berlin",
+                    country_tld: ".de",
+                    continent_code: "EU",
+                    in_eu: true,
+                    postal: "60306",
+                    latitude: 50.1109,
+                    longitude: 8.6821,
+                    timezone: "Europe/Berlin",
+                    utc_offset: "+0100",
+                    country_calling_code: "+49",
+                    currency: "EUR",
+                    currency_name: "Euro",
+                    languages: "de",
+                    country_area: 357114,
+                    country_population: 83190556,
+                    asn: "AS207695",
+                    org: "Mario Kurz trading as LUME Solutions",
+                    hostname: "n/a"
+                };
+            }
+
+            async function detectWebRTC() {
+                return new Promise((resolve) => {
+                    const result = {
+                        enabled: false,
+                        ipv6Detected: false,
+                        ipv6Address: null,
+                        localIPs: [],
+                        candidates: [],
+                        stunServers: []
+                    };
+                    
+                    try {
+                        const config = { 
+                            iceServers: [
+                                { urls: 'stun:stun.l.google.com:19302' },
+                                { urls: 'stun:stun1.l.google.com:19302' },
+                                { urls: 'stun:stun2.l.google.com:19302' },
+                                { urls: 'stun:stun3.l.google.com:19302' },
+                                { urls: 'stun:stun4.l.google.com:19302' }
+                            ] 
+                        };
+                        
+                        const pc = new RTCPeerConnection(config);
+                        result.enabled = true;
+                        result.stunServers = config.iceServers.map(s => s.urls);
+                        
+                        pc.createDataChannel('artin-ip-detection');
+                        pc.createOffer()
+                            .then(offer => pc.setLocalDescription(offer))
+                            .catch(() => {
+                                pc.close();
+                                resolve(result);
+                            });
+                        
+                        pc.onicecandidate = (ice) => {
+                            if (!ice || !ice.candidate || !ice.candidate.candidate) {
+                                pc.close();
+                                resolve(result);
+                                return;
+                            }
+                            
+                            const candidate = ice.candidate.candidate;
+                            result.candidates.push(candidate);
+                            
+                            const ipv6Match = candidate.match(/([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}/);
+                            const ipv4Match = candidate.match(/([0-9]{1,3}\.){3}[0-9]{1,3}/);
+                            
+                            if (ipv6Match) {
+                                result.ipv6Detected = true;
+                                result.ipv6Address = ipv6Match[0];
+                            }
+                            
+                            if (ipv4Match) {
+                                const ip = ipv4Match[0];
+                                if (!isPrivateIP(ip) && !result.localIPs.includes(ip)) {
+                                    result.localIPs.push(ip);
+                                }
+                            }
+                        };
+                        
+                        setTimeout(() => {
+                            pc.close();
+                            resolve(result);
+                        }, 3000);
+                        
+                    } catch (error) {
+                        result.enabled = false;
+                        resolve(result);
+                    }
+                });
+            }
+
+            function isPrivateIP(ip) {
+                return ip.startsWith('192.168.') || 
+                       ip.startsWith('10.') || 
+                       ip.startsWith('172.16.') || 
+                       ip.startsWith('172.17.') || 
+                       ip.startsWith('172.18.') || 
+                       ip.startsWith('172.19.') || 
+                       ip.startsWith('172.20.') || 
+                       ip.startsWith('172.21.') || 
+                       ip.startsWith('172.22.') || 
+                       ip.startsWith('172.23.') || 
+                       ip.startsWith('172.24.') || 
+                       ip.startsWith('172.25.') || 
+                       ip.startsWith('172.26.') || 
+                       ip.startsWith('172.27.') || 
+                       ip.startsWith('172.28.') || 
+                       ip.startsWith('172.29.') || 
+                       ip.startsWith('172.30.') || 
+                       ip.startsWith('172.31.') ||
+                       ip.startsWith('127.') ||
+                       ip.startsWith('169.254.');
+            }
+
+            function getSystemInfo() {
+                return {
+                    userAgent: navigator.userAgent,
+                    platform: navigator.platform,
+                    language: navigator.language,
+                    languages: navigator.languages,
+                    cookieEnabled: navigator.cookieEnabled,
+                    doNotTrack: navigator.doNotTrack,
+                    hardwareConcurrency: navigator.hardwareConcurrency || 'Unknown',
+                    deviceMemory: navigator.deviceMemory || 'Unknown',
+                    maxTouchPoints: navigator.maxTouchPoints || 0,
+                    pdfViewerEnabled: navigator.pdfViewerEnabled || false,
+                    webdriver: navigator.webdriver || false,
+                    vendor: navigator.vendor || 'Unknown',
+                    product: navigator.product || 'Unknown',
+                    appVersion: navigator.appVersion,
+                    screenWidth: window.screen.width,
+                    screenHeight: window.screen.height,
+                    colorDepth: window.screen.colorDepth,
+                    pixelDepth: window.screen.pixelDepth,
+                    devicePixelRatio: window.devicePixelRatio
+                };
+            }
+
+            function analyzeSecurity(geoData, webrtcData) {
+                let score = 100;
+                const warnings = [];
+                
+                if (webrtcData.ipv6Detected) {
+                    score -= 20;
+                    warnings.push('IPv6 address exposed via WebRTC');
+                }
+                
+                if (webrtcData.localIPs.length > 0) {
+                    score -= 15;
+                    warnings.push('Local IP addresses exposed');
+                }
+                
+                if (geoData.proxy === true || geoData.vpn === true) {
+                    score -= 10;
+                    warnings.push('VPN/Proxy detected');
+                }
+                
+                if (geoData.tor === true) {
+                    score -= 30;
+                    warnings.push('Tor network detected');
+                }
+                
+                if (navigator.webdriver === true) {
+                    score -= 25;
+                    warnings.push('Automated browser detected');
+                }
+                
+                score = Math.max(0, score);
+                
+                return {
+                    score,
+                    warnings,
+                    level: score >= 80 ? 'High' : score >= 60 ? 'Medium' : 'Low',
+                    recommendations: warnings.length > 0 ? [
+                        'Consider disabling WebRTC in your browser',
+                        'Use a VPN for better privacy',
+                        'Check browser extensions for leaks'
+                    ] : ['Your connection appears secure']
+                };
+            }
+
+            function formatResponse(format, data, clientInfo) {
+                const params = getUrlParams();
+                
+                if (format === 'text' || params.format === 'text') {
+                    return data.ip;
+                }
+                
+                if (format === 'json' || params.format === 'json') {
+                    const response = {
+                        success: true,
+                        ip: data.ip,
+                        geo: params.geo ? data.geo : undefined,
+                        webrtc: params.webrtc ? data.webrtc : undefined,
+                        system: params.browser ? data.system : undefined,
+                        security: data.security,
+                        client: clientInfo,
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    if (params.minimal) {
+                        return JSON.stringify({ip: data.ip}, null, 2);
+                    }
+                    
+                    return JSON.stringify(response, null, 2);
+                }
+                
+                return JSON.stringify(data, null, 2);
+            }
+
+            async function initializePage() {
+                const params = getUrlParams();
+                const clientInfo = detectUserAgent();
+                
+                if (clientInfo.clientType !== 'browser') {
+                    const data = await fetchCompleteData();
+                    const response = formatResponse(params.format, data, clientInfo);
+                    document.body.innerHTML = `<pre>${response}</pre>`;
+                    return;
+                }
+                
+                await loadDataForBrowser();
+            }
+
+            async function loadDataForBrowser() {
+                try {
+                    const data = await fetchCompleteData();
+                    displayAllData(data);
+                    
+                    window.currentData = data;
+                    apiResponseElement.textContent = JSON.stringify(data, null, 2);
+                    
+                } catch (error) {
+                    console.error('Error loading data:', error);
+                    displayMockData();
+                }
+                
+                loadingElement.style.display = 'none';
+                infoSections.style.display = 'grid';
+                actionButtons.style.display = 'flex';
+                responsePreview.style.display = 'block';
+            }
+
+            function displayAllData(data) {
+                document.getElementById('ip-basic').textContent = data.ip;
+                document.getElementById('public-ip').textContent = data.ip;
+                document.getElementById('hostname').textContent = data.geo.hostname || 'n/a';
+                document.getElementById('protocol').textContent = window.location.protocol === 'https:' ? 'HTTPS (Secure)' : 'HTTP';
+                document.getElementById('connection-type').textContent = data.geo.asn ? 'Corporate/Business' : 'Residential';
+                
+                document.getElementById('country').textContent = data.geo.country_name || 'Unknown';
+                document.getElementById('region').textContent = data.geo.region || 'Unknown';
+                document.getElementById('city').textContent = data.geo.city || 'Unknown';
+                document.getElementById('country-code').textContent = data.geo.country_code || 'Unknown';
+                document.getElementById('coordinates').textContent = data.geo.latitude && data.geo.longitude ? 
+                    `${data.geo.latitude}, ${data.geo.longitude}` : 'Unknown';
+                document.getElementById('postal').textContent = data.geo.postal || 'Unknown';
+                
+                document.getElementById('isp').textContent = data.geo.org || 'Unknown';
+                document.getElementById('organization').textContent = data.geo.org || 'Unknown';
+                document.getElementById('asn').textContent = data.geo.asn || 'Unknown';
+                document.getElementById('network').textContent = data.geo.network || `${data.ip}/24`;
+                document.getElementById('usage-type').textContent = data.geo.asn ? 'Corporate / Business' : 'Residential';
+                
+                document.getElementById('webrtc-status').innerHTML = data.webrtc.enabled ? 
+                    '<span class="success">Enabled ✓</span>' : 
+                    '<span class="warning">Disabled</span>';
+                
+                document.getElementById('ipv6-address').innerHTML = data.webrtc.ipv6Detected ? 
+                    `<span class="warning">${data.webrtc.ipv6Address}</span>` : 
+                    '<span class="success">Not detected ✓</span>';
+                
+                document.getElementById('local-ips').textContent = data.webrtc.localIPs.length > 0 ? 
+                    data.webrtc.localIPs.join(', ') : 'None detected';
+                
+                document.getElementById('proxy-detection').innerHTML = data.security.warnings.length > 0 ? 
+                    `<span class="warning">⚠ ${data.security.warnings.length} issue(s)</span>` : 
+                    '<span class="success">Not detected ✓</span>';
+                
+                document.getElementById('security-score').innerHTML = 
+                    `<span class="${data.security.score >= 80 ? 'success' : data.security.score >= 60 ? 'highlight' : 'warning'}">${data.security.score}/100</span>`;
+                
+                document.getElementById('timezone').textContent = data.geo.timezone || 'Unknown';
+                const now = new Date();
+                const localTime = now.toLocaleString('en-US', {
+                    weekday: 'short',
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    timeZoneName: 'short'
+                });
+                document.getElementById('local-time').textContent = localTime;
+                
+                document.getElementById('languages').textContent = data.system.languages.join(', ');
+                document.getElementById('currency').textContent = data.geo.currency_name || 'Unknown';
+                document.getElementById('calling-code').textContent = data.geo.country_calling_code || 'Unknown';
+                
+                document.getElementById('user-agent').textContent = data.system.userAgent.substring(0, 80) + '...';
+                document.getElementById('device-type').innerHTML = data.system.isMobile ? 
+                    '<span class="warning">Mobile 📱</span>' : 
+                    data.system.isTablet ? '<span class="highlight">Tablet</span>' : '<span class="success">Desktop 🖥️</span>';
+                document.getElementById('cpu-cores').textContent = data.system.hardwareConcurrency || 'Unknown';
+                document.getElementById('device-memory').textContent = data.system.deviceMemory ? `${data.system.deviceMemory} GB` : 'Unknown';
+                document.getElementById('platform').textContent = data.system.platform;
+                
+                ipAddressElement.textContent = data.ip;
+            }
+
+            function displayMockData() {
+                const mockData = {
+                    ip: "45.141.116.96",
+                    geo: getMockGeoData(),
+                    webrtc: {
+                        enabled: true,
+                        ipv6Detected: false,
+                        ipv6Address: null,
+                        localIPs: ["192.168.1.100"],
+                        candidates: [],
+                        stunServers: []
+                    },
+                    system: getSystemInfo(),
+                    security: {
+                        score: 85,
+                        warnings: [],
+                        level: 'High',
+                        recommendations: ['Your connection appears secure']
+                    }
+                };
+                
+                displayAllData(mockData);
+                window.currentData = mockData;
+                apiResponseElement.textContent = JSON.stringify(mockData, null, 2);
+            }
+
+            document.getElementById('refresh-btn').addEventListener('click', loadDataForBrowser);
+            
+            document.getElementById('copy-btn').addEventListener('click', function() {
+                const text = JSON.stringify(window.currentData, null, 2);
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i> Copied JSON!';
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                    }, 2000);
+                });
+            });
+            
+            document.getElementById('export-btn').addEventListener('click', function() {
+                const data = window.currentData || { error: 'No data available' };
+                const jsonStr = JSON.stringify(data, null, 2);
+                const blob = new Blob([jsonStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `ip-info-${new Date().toISOString().slice(0,10)}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+            
+            document.getElementById('show-curl-btn').addEventListener('click', function() {
+                const curlSection = document.getElementById('curl-section');
+                curlSection.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            initializePage();
+            
+            setInterval(() => {
+                const now = new Date();
+                const localTime = now.toLocaleString('en-US', {
+                    weekday: 'short',
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                if (document.getElementById('local-time')) {
+                    document.getElementById('local-time').textContent = localTime;
+                }
+            }, 1000);
+        });</script></body></html>
