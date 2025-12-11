@@ -1,1 +1,340 @@
-<!doctypehtml><html lang=en><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><title>ARTIN NEXUS | Quantum Music Interface</title><style>:root{--nexus-primary:#7b2ff7;--nexus-primary-dark:#5a1bd6;--nexus-primary-light:#9d5ff9;--nexus-secondary:#00f7ff;--nexus-secondary-dark:#00c4cc;--nexus-accent:#ff2b94;--nexus-accent-light:#ff5aa9;--nexus-gold:#ffd166;--nexus-platinum:#e0e0e0;--nexus-glow-primary:radial-gradient(circle at center, rgba(123, 47, 247, 0.4), transparent 70%);--nexus-glow-secondary:radial-gradient(circle at center, rgba(0, 247, 255, 0.3), transparent 70%);--nexus-glow-accent:radial-gradient(circle at center, rgba(255, 43, 148, 0.3), transparent 70%);--nexus-depth-0:#050510;--nexus-depth-1:#0a0a1a;--nexus-depth-2:#0f0f24;--nexus-depth-3:#14142e;--nexus-depth-4:#191938;--nexus-glass:rgba(255, 255, 255, 0.05);--nexus-glass-border:rgba(255, 255, 255, 0.1);--nexus-glass-highlight:rgba(255, 255, 255, 0.15);--nexus-gradient-horizontal:linear-gradient(90deg, var(--nexus-primary), var(--nexus-secondary));--nexus-gradient-vertical:linear-gradient(180deg, var(--nexus-primary), var(--nexus-accent));--nexus-gradient-diagonal:linear-gradient(135deg, var(--nexus-primary), var(--nexus-secondary), var(--nexus-accent));--nexus-gradient-radial:radial-gradient(circle at center, var(--nexus-primary), var(--nexus-depth-0));--nexus-transition-smooth:all 0.6s cubic-bezier(0.4, 0, 0.2, 1);--nexus-transition-fast:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);--nexus-transition-slow:all 1s cubic-bezier(0.4, 0, 0.2, 1);--nexus-shadow-soft:0 8px 32px rgba(0, 0, 0, 0.3);--nexus-shadow-medium:0 20px 60px rgba(0, 0, 0, 0.5);--nexus-shadow-intense:0 40px 120px rgba(0, 0, 0, 0.7);--nexus-shadow-glow:0 0 60px rgba(123, 47, 247, 0.5);--nexus-shadow-glow-secondary:0 0 60px rgba(0, 247, 255, 0.4);--nexus-shadow-glow-accent:0 0 60px rgba(255, 43, 148, 0.4)}*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}html{scroll-behavior:smooth;overflow-x:hidden}body{font-family:Inter,'SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--nexus-depth-0);color:var(--nexus-platinum);min-height:100vh;overflow-x:hidden;position:relative;cursor:none}.quantum-cursor{position:fixed;width:8px;height:8px;background:var(--nexus-secondary);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference;transition:var(--nexus-transition-fast);filter:drop-shadow(0 0 8px var(--nexus-secondary))}.cursor-trail{position:fixed;width:4px;height:4px;background:var(--nexus-accent);border-radius:50%;pointer-events:none;z-index:9998;opacity:0;transition:opacity .3s;filter:blur(1px)}.quantum-universe{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-3;overflow:hidden;pointer-events:none}.universe-canvas{position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 20% 30%,var(--nexus-glow-primary) 0,transparent 50%),radial-gradient(circle at 80% 20%,var(--nexus-glow-secondary) 0,transparent 50%),radial-gradient(circle at 40% 80%,var(--nexus-glow-accent) 0,transparent 50%);animation:universe-drift 180s linear infinite}.quantum-grid{position:absolute;top:0;left:0;width:200%;height:200%;background-image:linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:100px 100px;animation:grid-move 100s linear infinite;opacity:.2}.energy-particles{position:absolute;width:100%;height:100%}.energy-particle{position:absolute;width:2px;height:2px;background:var(--nexus-secondary);border-radius:50%;filter:blur(1px);animation:energy-float 20s infinite linear;opacity:0}@keyframes universe-drift{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(-200px,-200px) rotate(1deg)}}@keyframes grid-move{0%{transform:translate(0,0)}100%{transform:translate(-100px,-100px)}}@keyframes energy-float{0%{transform:translateY(100vh) translateX(0) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) translateX(100vw) rotate(720deg);opacity:0}}.nexus-container{max-width:1600px;margin:0 auto;padding:80px 40px;position:relative;z-index:1}.nexus-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:120px;padding:40px 0;position:relative}.header-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;background:var(--nexus-glow-primary);filter:blur(100px);opacity:.3;z-index:-1}.nexus-logo{position:relative;display:inline-block}.logo-text{font-size:3.5rem;font-weight:900;background:var(--nexus-gradient-horizontal);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-2px;position:relative;z-index:2;text-shadow:0 10px 40px rgba(123,47,247,.3);transition:var(--nexus-transition-smooth)}.logo-aura{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:3.8rem;font-weight:900;background:var(--nexus-gradient-horizontal);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.4;filter:blur(20px);z-index:1;animation:logo-pulse 4s ease-in-out infinite}.logo-badge{position:absolute;top:-10px;right:-25px;width:24px;height:24px;background:var(--nexus-gradient-horizontal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--nexus-depth-0);box-shadow:0 0 20px var(--nexus-primary);animation:badge-orbit 6s ease-in-out infinite;z-index:3}@keyframes logo-pulse{0%,100%{opacity:.3;filter:blur(20px)}50%{opacity:.6;filter:blur(25px)}}@keyframes badge-orbit{0%,100%{transform:translate(0,0) rotate(0)}25%{transform:translate(5px,-5px) rotate(90deg)}50%{transform:translate(-3px,8px) rotate(180deg)}75%{transform:translate(-8px,-3px) rotate(270deg)}}.nexus-time{position:relative;text-align:right}.time-capsule{position:relative;display:inline-block;padding:25px 35px;background:rgba(10,10,26,.8);backdrop-filter:blur(40px);border-radius:20px;border:1px solid rgba(255,255,255,.1);box-shadow:var(--nexus-shadow-medium),inset 0 1px 0 rgba(255,255,255,.1);transition:var(--nexus-transition-smooth);overflow:hidden}.time-capsule::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);transition:left .8s ease}.time-capsule:hover::before{left:100%}.time-capsule:hover{border-color:var(--nexus-primary);box-shadow:var(--nexus-shadow-intense),var(--nexus-shadow-glow),inset 0 1px 0 rgba(255,255,255,.2);transform:translateY(-5px)}.time-display{font-size:2.8rem;font-weight:300;color:var(--nexus-secondary);font-variant-numeric:tabular-nums;letter-spacing:3px;text-shadow:0 2px 20px rgba(0,247,255,.3);margin-bottom:10px}.date-display{font-size:.9rem;color:var(--nexus-platinum);opacity:.8;letter-spacing:2px;text-transform:uppercase;font-weight:500}.nexus-hero{text-align:center;margin-bottom:150px;position:relative}.hero-title{font-size:5.5rem;font-weight:900;line-height:1.1;margin-bottom:40px;position:relative}.title-line{display:block;margin-bottom:20px;overflow:hidden;height:85px}.title-char{display:inline-block;transform:translateY(120%);animation:char-reveal 1.2s cubic-bezier(.4,0,.2,1) forwards}.title-gradient{background:var(--nexus-gradient-horizontal);-webkit-background-clip:text;background-clip:text;color:transparent;position:relative}.hero-subtitle{font-size:1.4rem;color:rgba(255,255,255,.7);max-width:600px;margin:0 auto 60px;line-height:1.8;font-weight:300;opacity:0;transform:translateY(30px);animation:subtitle-reveal 1.5s .8s cubic-bezier(.4,0,.2,1) forwards}@keyframes char-reveal{to{transform:translateY(0)}}@keyframes subtitle-reveal{to{opacity:1;transform:translateY(0)}}.quantum-player{position:relative;max-width:800px;margin:0 auto}.player-hologram{position:relative;padding:40px;background:rgba(15,15,36,.7);backdrop-filter:blur(50px);border-radius:30px;border:1px solid rgba(255,255,255,.15);box-shadow:var(--nexus-shadow-intense),0 0 80px rgba(123,47,247,.3),inset 0 1px 0 rgba(255,255,255,.1);transition:var(--nexus-transition-smooth)}.player-hologram:hover{border-color:var(--nexus-primary);box-shadow:var(--nexus-shadow-intense),var(--nexus-shadow-glow),inset 0 1px 0 rgba(255,255,255,.2);transform:translateY(-10px)}.player-core{position:relative;z-index:1}.player-header{display:flex;align-items:center;gap:20px;margin-bottom:50px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}.player-icon{width:70px;height:70px;background:var(--nexus-gradient-horizontal);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 30px var(--nexus-primary);animation:icon-float 6s ease-in-out infinite}.player-title{font-size:2rem;font-weight:700;color:var(--nexus-platinum);letter-spacing:1px}@keyframes icon-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(5deg)}}.now-playing{display:flex;align-items:center;gap:40px;margin-bottom:60px}.album-hologram{width:180px;height:180px;background:var(--nexus-gradient-vertical);border-radius:25px;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#fff;box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 50px var(--nexus-primary),inset 0 1px 0 rgba(255,255,255,.3);position:relative;overflow:hidden;flex-shrink:0;transition:var(--nexus-transition-smooth)}.album-hologram::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .8s ease}.album-hologram:hover::before{left:100%}.album-hologram:hover{transform:scale(1.05) rotate(5deg);box-shadow:0 40px 80px rgba(0,0,0,.7),0 0 70px var(--nexus-primary),inset 0 1px 0 rgba(255,255,255,.5)}.track-info{flex:1;min-width:0}.track-title{font-size:3.2rem;font-weight:800;color:var(--nexus-platinum);margin-bottom:15px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.track-details{font-size:1.2rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:25px}.track-artist{font-weight:600;color:var(--nexus-secondary);position:relative;padding-left:30px}.track-artist::before{content:'♪';position:absolute;left:0;color:var(--nexus-primary);font-size:1.5rem;animation:note-bounce 2s ease-in-out infinite}@keyframes note-bounce{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(15deg)}}.player-controls{display:flex;justify-content:center;align-items:center;gap:30px;margin:70px 0 60px}.control-orb{width:65px;height:65px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--nexus-platinum);font-size:1.5rem;cursor:pointer;transition:var(--nexus-transition-smooth);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;backdrop-filter:blur(10px)}.control-orb::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:var(--nexus-gradient-horizontal);opacity:0;transition:opacity .3s}.control-orb:hover::before{opacity:.3}.control-orb:hover{transform:scale(1.15);border-color:var(--nexus-primary);box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 30px var(--nexus-primary)}.play-orb{width:85px;height:85px;background:var(--nexus-gradient-horizontal);border:none;font-size:2.2rem;box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 40px var(--nexus-primary);position:relative;z-index:1}.play-orb::after{content:'';position:absolute;top:-3px;left:-3px;right:-3px;bottom:-3px;background:var(--nexus-gradient-horizontal);border-radius:50%;z-index:-1;opacity:.5;filter:blur(20px);animation:orb-pulse 3s ease-in-out infinite alternate}@keyframes orb-pulse{0%{opacity:.3;filter:blur(20px)}100%{opacity:.6;filter:blur(25px)}}.play-orb:hover{transform:scale(1.2);box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 60px var(--nexus-primary)}.progress-quantum{margin-top:60px;position:relative}.progress-bar{height:8px;background:rgba(255,255,255,.1);border-radius:4px;margin-bottom:15px;cursor:pointer;position:relative;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.3)}.progress-fill{height:100%;width:30%;background:var(--nexus-gradient-horizontal);border-radius:4px;transition:width .1s linear;position:relative;box-shadow:0 0 20px var(--nexus-primary),0 0 40px rgba(123,47,247,.3)}.progress-fill::after{content:'';position:absolute;right:-8px;top:50%;transform:translateY(-50%);width:18px;height:18px;background:#fff;border-radius:50%;box-shadow:0 0 20px var(--nexus-primary),0 0 40px var(--nexus-secondary)}.time-display-bar{display:flex;justify-content:space-between;font-size:.9rem;color:rgba(255,255,255,.7);font-variant-numeric:tabular-nums;font-weight:500}.nexus-status{position:fixed;bottom:40px;left:40px;background:rgba(10,10,26,.8);backdrop-filter:blur(30px);border-radius:20px;padding:20px 25px;border:1px solid rgba(255,255,255,.1);box-shadow:var(--nexus-shadow-medium);transition:var(--nexus-transition-smooth);z-index:1000;cursor:pointer}.nexus-status:hover{border-color:var(--nexus-secondary);transform:translateY(-5px);box-shadow:var(--nexus-shadow-medium),var(--nexus-shadow-glow-secondary)}.status-content{display:flex;align-items:center;gap:15px}.ping-indicator{display:flex;align-items:center;gap:10px}.ping-dot{width:10px;height:10px;background:var(--nexus-gradient-horizontal);border-radius:50%;position:relative;animation:ping-pulse 2s ease-in-out infinite}.ping-dot::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:20px;height:20px;border:2px solid var(--nexus-accent);border-radius:50%;opacity:0;animation:ping-ring 2s ease-in-out infinite}@keyframes ping-pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,43,148,.4)}50%{transform:scale(1.3);box-shadow:0 0 0 8px rgba(255,43,148,0)}}@keyframes ping-ring{0%{transform:translate(-50%,-50%) scale(.8);opacity:.8}100%{transform:translate(-50%,-50%) scale(2);opacity:0}}.ping-value{font-size:1rem;color:var(--nexus-platinum);font-weight:600;min-width:70px;font-variant-numeric:tabular-nums}.nexus-library{position:fixed;bottom:40px;right:40px;width:70px;height:70px;border-radius:50%;background:var(--nexus-gradient-horizontal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.8rem;text-decoration:none;transition:var(--nexus-transition-smooth);box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 30px var(--nexus-primary);z-index:1000;overflow:hidden}.nexus-library:hover{transform:scale(1.15) rotate(90deg);box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 50px var(--nexus-primary)}@media (max-width:1400px){.nexus-container{padding:60px 30px}.hero-title{font-size:4.5rem}.title-line{height:70px}}@media (max-width:1024px){.hero-title{font-size:3.8rem}.now-playing{flex-direction:column;text-align:center;gap:30px}.album-hologram{width:150px;height:150px;font-size:3.5rem}.track-title{font-size:2.8rem}}@media (max-width:768px){.nexus-container{padding:40px 20px}.nexus-header{flex-direction:column;gap:30px;text-align:center;margin-bottom:80px}.hero-title{font-size:3rem}.title-line{height:55px}.logo-text{font-size:2.8rem}.player-hologram{padding:30px 20px}.player-controls{gap:20px}.control-orb{width:55px;height:55px}.play-orb{width:70px;height:70px}.nexus-library,.nexus-status{position:relative;bottom:auto;left:auto;right:auto;margin:30px auto;width:fit-content}}@media (max-width:480px){.hero-title{font-size:2.4rem}.title-line{height:45px}.hero-subtitle{font-size:1.2rem}.album-hologram{width:120px;height:120px;font-size:3rem}.track-title{font-size:2.2rem}}</style><link href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"rel=stylesheet><div class=quantum-universe><div class=universe-canvas></div><div class=quantum-grid></div><div class=energy-particles id=energyParticles></div></div><div class=quantum-cursor></div><div class=nexus-container><header class=nexus-header><div class=header-glow></div><div class=nexus-logo><span class=logo-aura>ARTIN</span><span class=logo-text>ARTIN</span><div class=logo-badge><i class="fas fa-star"></i></div></div><div class=nexus-time><div class=time-capsule><div class=time-display id=nexusTime>00:00:00</div><div class=date-display id=nexusDate></div></div></div></header><main class=nexus-hero><h1 class=hero-title><div class=title-line><span class=title-char><span class=title-gradient>QUANTUM</span></span></div><div class=title-line><span class=title-char><span class=title-gradient>MUSIC</span></span></div><div class=title-line><span class=title-char><span class=title-gradient>EXPERIENCE</span></span></div></h1><p class=hero-subtitle>Where sound transcends reality. A symphony of light, motion, and pure auditory bliss. The ultimate fusion of technology and artistry.<section class=quantum-player><div class=player-hologram><div class=player-core><div class=player-header><div class=player-icon><i class="fas fa-headphones"></i></div><h2 class=player-title>QUANTUM PLAYER</h2></div><div class=now-playing><div class=album-hologram><i class="fas fa-music"></i></div><div class=track-info><div class=track-title id=currentTrack>QUANTUM SELECTION</div><div class=track-details><span class=track-artist id=currentArtist>ARTIN</span><span id=currentDuration>--:--</span></div></div></div><div class=player-controls><button class=control-orb id=prevBtn><i class="fas fa-step-backward"></i></button><button class="control-orb play-orb"id=playBtn><i class="fas fa-play"id=playIcon></i></button><button class=control-orb id=nextBtn><i class="fas fa-step-forward"></i></button></div><div class=progress-quantum><div class=progress-bar id=progressBar><div class=progress-fill id=progressFill></div></div><div class=time-display-bar><span id=currentTime>0:00</span><span id=totalTime>0:00</span></div></div></div></div></section></main></div><div class=nexus-status id=nexusStatus><div class=status-content><div class=ping-indicator><div class=ping-dot></div><span class=ping-value id=pingValue>-- ms</span></div></div></div><a class=nexus-library href=https://artin.com/library target=_blank><i class="fas fa-book"></i></a><script> document.addEventListener('DOMContentLoaded', () => { initializeQuantumSystem(); }); function initializeQuantumSystem() { createEnergyParticles(); initializeCursor(); initializeTime(); initializeMusicPlayer(); initializeStatus(); initializeAnimations(); } function createEnergyParticles() { const container = document.getElementById('energyParticles'); const particleCount = 60; for (let i = 0; i < particleCount; i++) { const particle = document.createElement('div'); particle.className = 'energy-particle'; particle.style.left = `${Math.random() * 100}%`; particle.style.width = `${Math.random() * 3 + 1}px`; particle.style.height = particle.style.width; const colors = ['#7b2ff7', '#00f7ff', '#ff2b94']; particle.style.background = colors[Math.floor(Math.random() * colors.length)]; particle.style.animationDelay = `${Math.random() * 20}s`; particle.style.animationDuration = `${Math.random() * 30 + 20}s`; container.appendChild(particle); } } function initializeCursor() { const cursor = document.querySelector('.quantum-cursor'); let mouseX = 0, mouseY = 0; let cursorX = 0, cursorY = 0; document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; const trail = document.createElement('div'); trail.className = 'cursor-trail'; trail.style.left = e.clientX + 'px'; trail.style.top = e.clientY + 'px'; trail.style.opacity = '1'; document.body.appendChild(trail); setTimeout(() => { trail.style.opacity = '0'; setTimeout(() => trail.remove(), 300); }, 100); }); function animateCursor() { cursorX += (mouseX - cursorX - 4) * 0.1; cursorY += (mouseY - cursorY - 4) * 0.1; cursor.style.left = cursorX + 'px'; cursor.style.top = cursorY + 'px'; requestAnimationFrame(animateCursor); } animateCursor(); document.querySelectorAll('button, a, .control-orb, .nexus-status, .nexus-library').forEach(el => { el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2)'; cursor.style.background = 'var(--nexus-accent)'; }); el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; cursor.style.background = 'var(--nexus-secondary)'; }); }); } function initializeTime() { function updateTime() { const now = new Date(); const iranTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Tehran' })); const hours = iranTime.getHours().toString().padStart(2, '0'); const minutes = iranTime.getMinutes().toString().padStart(2, '0'); const seconds = iranTime.getSeconds().toString().padStart(2, '0'); document.getElementById('nexusTime').textContent = `${hours}:${minutes}:${seconds}`; const dateStr = iranTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); document.getElementById('nexusDate').textContent = dateStr; } updateTime(); setInterval(updateTime, 1000); } function initializeMusicPlayer() { const playBtn = document.getElementById('playBtn'); const playIcon = document.getElementById('playIcon'); const progressBar = document.getElementById('progressBar'); const progressFill = document.getElementById('progressFill'); const currentTime = document.getElementById('currentTime'); const totalTime = document.getElementById('totalTime'); const currentTrack = document.getElementById('currentTrack'); const currentArtist = document.getElementById('currentArtist'); const currentDuration = document.getElementById('currentDuration'); const quantumLibrary = [ { title: "kos mali", artist: "idk", duration: "2:24", url: "https://abrehamrahi.ir/o/public/BqsxZD8J/" }, { title: "Nexus Flow", artist: "ARTIN", duration: "5:45", url: "YOUR_MP3_LINK_2_HERE" }, { title: "Digital Aurora", artist: "ARTIN", duration: "6:15", url: "YOUR_MP3_LINK_3_HERE" } ]; let currentTrackIndex = 0; let isPlaying = false; let audio = new Audio(); let updateInterval; function formatTime(seconds) { const mins = Math.floor(seconds / 60); const secs = Math.floor(seconds % 60); return `${mins}:${secs.toString().padStart(2, '0')}`; } function loadTrack(index) { currentTrackIndex = index; const track = quantumLibrary[index]; if (!track.url || track.url.includes("YOUR_MP3_LINK")) { console.log(`🎵 Add your MP3 URL for: "${track.title}"`); return; } audio.src = track.url; currentTrack.style.opacity = '0'; currentTrack.style.transform = 'translateY(20px)'; setTimeout(() => { currentTrack.textContent = track.title; currentArtist.textContent = track.artist; currentDuration.textContent = track.duration; totalTime.textContent = track.duration; currentTrack.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'; currentTrack.style.opacity = '1'; currentTrack.style.transform = 'translateY(0)'; }, 300); audio.addEventListener('loadedmetadata', () => { totalTime.textContent = formatTime(audio.duration); }); progressFill.style.width = '0%'; currentTime.textContent = '0:00'; if (isPlaying) { audio.play(); playIcon.className = 'fas fa-pause'; } } function togglePlay() { if (!audio.src) { loadTrack(0); } playBtn.style.transform = 'scale(0.9)'; setTimeout(() => { playBtn.style.transform = 'scale(1.1)'; }, 100); setTimeout(() => { playBtn.style.transform = 'scale(1)'; }, 200); if (isPlaying) { audio.pause(); playIcon.className = 'fas fa-play'; clearInterval(updateInterval); } else { audio.play(); playIcon.className = 'fas fa-pause'; updateInterval = setInterval(() => { if (audio.duration) { const percent = (audio.currentTime / audio.duration) * 100; progressFill.style.width = `${percent}%`; currentTime.textContent = formatTime(audio.currentTime); if (audio.currentTime >= audio.duration) { nextTrack(); } } }, 1000); } isPlaying = !isPlaying; } function nextTrack() { currentTrackIndex = (currentTrackIndex + 1) % quantumLibrary.length; loadTrack(currentTrackIndex); if (isPlaying) audio.play(); } function prevTrack() { currentTrackIndex = (currentTrackIndex - 1 + quantumLibrary.length) % quantumLibrary.length; loadTrack(currentTrackIndex); if (isPlaying) audio.play(); } progressBar.addEventListener('click', (e) => { if (!audio.duration) return; const rect = progressBar.getBoundingClientRect(); const percent = (e.clientX - rect.left) / rect.width; audio.currentTime = percent * audio.duration; progressFill.style.width = `${percent * 100}%`; currentTime.textContent = formatTime(audio.currentTime); const ripple = document.createElement('div'); ripple.style.position = 'absolute'; ripple.style.width = '20px'; ripple.style.height = '20px'; ripple.style.background = 'rgba(255, 255, 255, 0.3)'; ripple.style.borderRadius = '50%'; ripple.style.left = e.clientX - rect.left - 10 + 'px'; ripple.style.top = '50%'; ripple.style.transform = 'translateY(-50%)'; ripple.style.animation = 'ripple 0.6s linear forwards'; progressBar.appendChild(ripple); setTimeout(() => ripple.remove(), 600); }); const style = document.createElement('style'); style.textContent = ` @keyframes ripple { 0% { transform: translateY(-50%) scale(0); opacity: 0.5; } 100% { transform: translateY(-50%) scale(40); opacity: 0; } } `; document.head.appendChild(style); playBtn.addEventListener('click', togglePlay); document.getElementById('nextBtn').addEventListener('click', nextTrack); document.getElementById('prevBtn').addEventListener('click', prevTrack); if (quantumLibrary.length > 0) { loadTrack(0); } document.addEventListener('keydown', (e) => { switch(e.code) { case 'Space': e.preventDefault(); togglePlay(); break; case 'ArrowRight': nextTrack(); break; case 'ArrowLeft': prevTrack(); break; } }); document.addEventListener('visibilitychange', () => { if (!document.hidden && isPlaying) { audio.play(); } }); } function initializeStatus() { async function measurePing() { const startTime = performance.now(); try { const controller = new AbortController(); const timeoutId = setTimeout(() => controller.abort(), 5000); await fetch('https://www.google.com/favicon.ico', { method: 'HEAD', mode: 'no-cors', cache: 'no-store', signal: controller.signal }); clearTimeout(timeoutId); const endTime = performance.now(); const ping = Math.round(endTime - startTime); const pingValue = document.getElementById('pingValue'); pingValue.style.transform = 'scale(1.2)'; pingValue.textContent = `${ping} ms`; setTimeout(() => { pingValue.style.transition = 'transform 0.3s ease'; pingValue.style.transform = 'scale(1)'; }, 100); const status = document.getElementById('nexusStatus'); if (ping < 50) { status.style.borderColor = 'rgba(0, 247, 255, 0.3)'; } else if (ping < 150) { status.style.borderColor = 'rgba(255, 209, 102, 0.3)'; } else { status.style.borderColor = 'rgba(255, 43, 148, 0.3)'; } } catch (error) { document.getElementById('pingValue').textContent = 'OFFLINE'; } } setTimeout(measurePing, 1000); document.getElementById('nexusStatus').addEventListener('click', measurePing); } function initializeAnimations() { const titleChars = document.querySelectorAll('.title-char'); titleChars.forEach((char, index) => { setTimeout(() => { char.style.animationPlayState = 'running'; }, index * 300); }); document.body.style.opacity = '0'; document.body.style.transition = 'opacity 1.2s ease'; setTimeout(() => { document.body.style.opacity = '1'; }, 200); console.log(' ARTIN NEXUS Initialized'); console.log(' Add your MP3 URLs in the quantumLibrary array'); }</script>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ARTIN</title><style>:root{--nexus-primary:#7b2ff7;--nexus-primary-dark:#5a1bd6;--nexus-primary-light:#9d5ff9;--nexus-secondary:#00f7ff;--nexus-secondary-dark:#00c4cc;--nexus-accent:#ff2b94;--nexus-accent-light:#ff5aa9;--nexus-gold:#ffd166;--nexus-platinum:#e0e0e0;--nexus-glow-primary:radial-gradient(circle at center, rgba(123, 47, 247, 0.4), transparent 70%);--nexus-glow-secondary:radial-gradient(circle at center, rgba(0, 247, 255, 0.3), transparent 70%);--nexus-glow-accent:radial-gradient(circle at center, rgba(255, 43, 148, 0.3), transparent 70%);--nexus-depth-0:#050510;--nexus-depth-1:#0a0a1a;--nexus-depth-2:#0f0f24;--nexus-depth-3:#14142e;--nexus-depth-4:#191938;--nexus-glass:rgba(255, 255, 255, 0.05);--nexus-glass-border:rgba(255, 255, 255, 0.1);--nexus-glass-highlight:rgba(255, 255, 255, 0.15);--nexus-gradient-horizontal:linear-gradient(90deg, var(--nexus-primary), var(--nexus-secondary));--nexus-gradient-vertical:linear-gradient(180deg, var(--nexus-primary), var(--nexus-accent));--nexus-gradient-diagonal:linear-gradient(135deg, var(--nexus-primary), var(--nexus-secondary), var(--nexus-accent));--nexus-gradient-radial:radial-gradient(circle at center, var(--nexus-primary), var(--nexus-depth-0));--nexus-transition-smooth:all 0.6s cubic-bezier(0.4, 0, 0.2, 1);--nexus-transition-fast:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);--nexus-transition-slow:all 1s cubic-bezier(0.4, 0, 0.2, 1);--nexus-shadow-soft:0 8px 32px rgba(0, 0, 0, 0.3);--nexus-shadow-medium:0 20px 60px rgba(0, 0, 0, 0.5);--nexus-shadow-intense:0 40px 120px rgba(0, 0, 0, 0.7);--nexus-shadow-glow:0 0 60px rgba(123, 47, 247, 0.5);--nexus-shadow-glow-secondary:0 0 60px rgba(0, 247, 255, 0.4);--nexus-shadow-glow-accent:0 0 60px rgba(255, 43, 148, 0.4)}*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}html{scroll-behavior:smooth;overflow-x:hidden}body{font-family:Inter,'SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--nexus-depth-0);color:var(--nexus-platinum);min-height:100vh;overflow-x:hidden;position:relative;cursor:none}.quantum-cursor{position:fixed;width:8px;height:8px;background:var(--nexus-secondary);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference;transition:var(--nexus-transition-fast);filter:drop-shadow(0 0 8px var(--nexus-secondary))}.cursor-trail{position:fixed;width:4px;height:4px;background:var(--nexus-accent);border-radius:50%;pointer-events:none;z-index:9998;opacity:0;transition:opacity .3s;filter:blur(1px)}.quantum-universe{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-3;overflow:hidden;pointer-events:none}.universe-canvas{position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 20% 30%,var(--nexus-glow-primary) 0,transparent 50%),radial-gradient(circle at 80% 20%,var(--nexus-glow-secondary) 0,transparent 50%),radial-gradient(circle at 40% 80%,var(--nexus-glow-accent) 0,transparent 50%);animation:universe-drift 180s linear infinite}.quantum-grid{position:absolute;top:0;left:0;width:200%;height:200%;background-image:linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:100px 100px;animation:grid-move 100s linear infinite;opacity:.2}.energy-particles{position:absolute;width:100%;height:100%}.energy-particle{position:absolute;width:2px;height:2px;background:var(--nexus-secondary);border-radius:50%;filter:blur(1px);animation:energy-float 20s infinite linear;opacity:0}@keyframes universe-drift{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(-200px,-200px) rotate(1deg)}}@keyframes grid-move{0%{transform:translate(0,0)}100%{transform:translate(-100px,-100px)}}@keyframes energy-float{0%{transform:translateY(100vh) translateX(0) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) translateX(100vw) rotate(720deg);opacity:0}}.nexus-container{max-width:1600px;margin:0 auto;padding:80px 40px;position:relative;z-index:1}.nexus-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:120px;padding:40px 0;position:relative}.header-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;background:var(--nexus-glow-primary);filter:blur(100px);opacity:.3;z-index:-1}.nexus-logo{position:relative;display:inline-block}.logo-text{font-size:3.5rem;font-weight:900;background:var(--nexus-gradient-horizontal);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-2px;position:relative;z-index:2;text-shadow:0 10px 40px rgba(123,47,247,.3);transition:var(--nexus-transition-smooth)}.logo-aura{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:3.8rem;font-weight:900;background:var(--nexus-gradient-horizontal);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.4;filter:blur(20px);z-index:1;animation:logo-pulse 4s ease-in-out infinite}.logo-badge{position:absolute;top:-10px;right:-25px;width:24px;height:24px;background:var(--nexus-gradient-horizontal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--nexus-depth-0);box-shadow:0 0 20px var(--nexus-primary);animation:badge-orbit 6s ease-in-out infinite;z-index:3}@keyframes logo-pulse{0%,100%{opacity:.3;filter:blur(20px)}50%{opacity:.6;filter:blur(25px)}}@keyframes badge-orbit{0%,100%{transform:translate(0,0) rotate(0)}25%{transform:translate(5px,-5px) rotate(90deg)}50%{transform:translate(-3px,8px) rotate(180deg)}75%{transform:translate(-8px,-3px) rotate(270deg)}}.nexus-time{position:relative;text-align:right}.time-capsule{position:relative;display:inline-block;padding:25px 35px;background:rgba(10,10,26,.8);backdrop-filter:blur(40px);border-radius:20px;border:1px solid rgba(255,255,255,.1);box-shadow:var(--nexus-shadow-medium),inset 0 1px 0 rgba(255,255,255,.1);transition:var(--nexus-transition-smooth);overflow:hidden}.time-capsule::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);transition:left .8s ease}.time-capsule:hover::before{left:100%}.time-capsule:hover{border-color:var(--nexus-primary);box-shadow:var(--nexus-shadow-intense),var(--nexus-shadow-glow),inset 0 1px 0 rgba(255,255,255,.2);transform:translateY(-5px)}.time-display{font-size:2.8rem;font-weight:300;color:var(--nexus-secondary);font-variant-numeric:tabular-nums;letter-spacing:3px;text-shadow:0 2px 20px rgba(0,247,255,.3);margin-bottom:10px}.date-display{font-size:.9rem;color:var(--nexus-platinum);opacity:.8;letter-spacing:2px;text-transform:uppercase;font-weight:500}.nexus-hero{text-align:center;margin-bottom:150px;position:relative}.hero-title{font-size:5.5rem;font-weight:900;line-height:1.1;margin-bottom:40px;position:relative}.title-line{display:block;margin-bottom:20px;overflow:hidden;height:85px}.title-char{display:inline-block;transform:translateY(120%);animation:char-reveal 1.2s cubic-bezier(.4,0,.2,1) forwards}.title-gradient{background:var(--nexus-gradient-horizontal);-webkit-background-clip:text;background-clip:text;color:transparent;position:relative}.hero-subtitle{font-size:1.4rem;color:rgba(255,255,255,.7);max-width:600px;margin:0 auto 60px;line-height:1.8;font-weight:300;opacity:0;transform:translateY(30px);animation:subtitle-reveal 1.5s .8s cubic-bezier(.4,0,.2,1) forwards}@keyframes char-reveal{to{transform:translateY(0)}}@keyframes subtitle-reveal{to{opacity:1;transform:translateY(0)}}.quantum-player{position:relative;max-width:800px;margin:0 auto}.player-hologram{position:relative;padding:40px;background:rgba(15,15,36,.7);backdrop-filter:blur(50px);border-radius:30px;border:1px solid rgba(255,255,255,.15);box-shadow:var(--nexus-shadow-intense),0 0 80px rgba(123,47,247,.3),inset 0 1px 0 rgba(255,255,255,.1);transition:var(--nexus-transition-smooth)}.player-hologram:hover{border-color:var(--nexus-primary);box-shadow:var(--nexus-shadow-intense),var(--nexus-shadow-glow),inset 0 1px 0 rgba(255,255,255,.2);transform:translateY(-10px)}.player-core{position:relative;z-index:1}.player-header{display:flex;align-items:center;gap:20px;margin-bottom:50px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}.player-icon{width:70px;height:70px;background:var(--nexus-gradient-horizontal);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 30px var(--nexus-primary);animation:icon-float 6s ease-in-out infinite}.player-title{font-size:2rem;font-weight:700;color:var(--nexus-platinum);letter-spacing:1px}@keyframes icon-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(5deg)}}.now-playing{display:flex;align-items:center;gap:40px;margin-bottom:60px}.album-hologram{width:180px;height:180px;background:var(--nexus-gradient-vertical);border-radius:25px;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#fff;box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 50px var(--nexus-primary),inset 0 1px 0 rgba(255,255,255,.3);position:relative;overflow:hidden;flex-shrink:0;transition:var(--nexus-transition-smooth)}.album-hologram::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .8s ease}.album-hologram:hover::before{left:100%}.album-hologram:hover{transform:scale(1.05) rotate(5deg);box-shadow:0 40px 80px rgba(0,0,0,.7),0 0 70px var(--nexus-primary),inset 0 1px 0 rgba(255,255,255,.5)}.track-info{flex:1;min-width:0}.track-title{font-size:3.2rem;font-weight:800;color:var(--nexus-platinum);margin-bottom:15px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.track-details{font-size:1.2rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:25px}.track-artist{font-weight:600;color:var(--nexus-secondary);position:relative;padding-left:30px}.track-artist::before{content:'♪';position:absolute;left:0;color:var(--nexus-primary);font-size:1.5rem;animation:note-bounce 2s ease-in-out infinite}@keyframes note-bounce{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(15deg)}}.player-controls{display:flex;justify-content:center;align-items:center;gap:30px;margin:70px 0 60px}.control-orb{width:65px;height:65px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--nexus-platinum);font-size:1.5rem;cursor:pointer;transition:var(--nexus-transition-smooth);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;backdrop-filter:blur(10px)}.control-orb::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:var(--nexus-gradient-horizontal);opacity:0;transition:opacity .3s}.control-orb:hover::before{opacity:.3}.control-orb:hover{transform:scale(1.15);border-color:var(--nexus-primary);box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 30px var(--nexus-primary)}.play-orb{width:85px;height:85px;background:var(--nexus-gradient-horizontal);border:none;font-size:2.2rem;box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 40px var(--nexus-primary);position:relative;z-index:1}.play-orb::after{content:'';position:absolute;top:-3px;left:-3px;right:-3px;bottom:-3px;background:var(--nexus-gradient-horizontal);border-radius:50%;z-index:-1;opacity:.5;filter:blur(20px);animation:orb-pulse 3s ease-in-out infinite alternate}@keyframes orb-pulse{0%{opacity:.3;filter:blur(20px)}100%{opacity:.6;filter:blur(25px)}}.play-orb:hover{transform:scale(1.2);box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 60px var(--nexus-primary)}.progress-quantum{margin-top:60px;position:relative}.progress-bar{height:8px;background:rgba(255,255,255,.1);border-radius:4px;margin-bottom:15px;cursor:pointer;position:relative;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.3)}.progress-fill{height:100%;width:30%;background:var(--nexus-gradient-horizontal);border-radius:4px;transition:width .1s linear;position:relative;box-shadow:0 0 20px var(--nexus-primary),0 0 40px rgba(123,47,247,.3)}.progress-fill::after{content:'';position:absolute;right:-8px;top:50%;transform:translateY(-50%);width:18px;height:18px;background:#fff;border-radius:50%;box-shadow:0 0 20px var(--nexus-primary),0 0 40px var(--nexus-secondary)}.time-display-bar{display:flex;justify-content:space-between;font-size:.9rem;color:rgba(255,255,255,.7);font-variant-numeric:tabular-nums;font-weight:500}.nexus-status{position:fixed;bottom:40px;left:40px;background:rgba(10,10,26,.8);backdrop-filter:blur(30px);border-radius:20px;padding:20px 25px;border:1px solid rgba(255,255,255,.1);box-shadow:var(--nexus-shadow-medium);transition:var(--nexus-transition-smooth);z-index:1000;cursor:pointer}.nexus-status:hover{border-color:var(--nexus-secondary);transform:translateY(-5px);box-shadow:var(--nexus-shadow-medium),var(--nexus-shadow-glow-secondary)}.status-content{display:flex;align-items:center;gap:15px}.ping-indicator{display:flex;align-items:center;gap:10px}.ping-dot{width:10px;height:10px;background:var(--nexus-gradient-horizontal);border-radius:50%;position:relative;animation:ping-pulse 2s ease-in-out infinite}.ping-dot::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:20px;height:20px;border:2px solid var(--nexus-accent);border-radius:50%;opacity:0;animation:ping-ring 2s ease-in-out infinite}@keyframes ping-pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,43,148,.4)}50%{transform:scale(1.3);box-shadow:0 0 0 8px rgba(255,43,148,0)}}@keyframes ping-ring{0%{transform:translate(-50%,-50%) scale(.8);opacity:.8}100%{transform:translate(-50%,-50%) scale(2);opacity:0}}.ping-value{font-size:1rem;color:var(--nexus-platinum);font-weight:600;min-width:70px;font-variant-numeric:tabular-nums}.nexus-library{position:fixed;bottom:40px;right:40px;width:70px;height:70px;border-radius:50%;background:var(--nexus-gradient-horizontal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.8rem;text-decoration:none;transition:var(--nexus-transition-smooth);box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 30px var(--nexus-primary);z-index:1000;overflow:hidden}.nexus-library:hover{transform:scale(1.15) rotate(90deg);box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 50px var(--nexus-primary)}@media (max-width:1400px){.nexus-container{padding:60px 30px}.hero-title{font-size:4.5rem}.title-line{height:70px}}@media (max-width:1024px){.hero-title{font-size:3.8rem}.now-playing{flex-direction:column;text-align:center;gap:30px}.album-hologram{width:150px;height:150px;font-size:3.5rem}.track-title{font-size:2.8rem}}@media (max-width:768px){.nexus-container{padding:40px 20px}.nexus-header{flex-direction:column;gap:30px;text-align:center;margin-bottom:80px}.hero-title{font-size:3rem}.title-line{height:55px}.logo-text{font-size:2.8rem}.player-hologram{padding:30px 20px}.player-controls{gap:20px}.control-orb{width:55px;height:55px}.play-orb{width:70px;height:70px}.nexus-library,.nexus-status{position:relative;bottom:auto;left:auto;right:auto;margin:30px auto;width:fit-content}}@media (max-width:480px){.hero-title{font-size:2.4rem}.title-line{height:45px}.hero-subtitle{font-size:1.2rem}.album-hologram{width:120px;height:120px;font-size:3rem}.track-title{font-size:2.2rem}}</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></head><body><!-- Quantum Universe --><div class="quantum-universe"><div class="universe-canvas"></div><div class="quantum-grid"></div><div class="energy-particles" id="energyParticles"></div></div><!-- Quantum Cursor --><div class="quantum-cursor"></div><div class="nexus-container"><header class="nexus-header"><div class="header-glow"></div><div class="nexus-logo"><span class="logo-aura">ARTIN</span> <span class="logo-text">ARTIN</span><div class="logo-badge"><i class="fas fa-star"></i></div></div><div class="nexus-time"><div class="time-capsule"><div class="time-display" id="nexusTime">00:00:00</div><div class="date-display" id="nexusDate"></div></div></div></header><main class="nexus-hero"><h1 class="hero-title"><div class="title-line"><span class="title-char"><span class="title-gradient">artin</span></span></div><div class="title-line"><span class="title-char"><span class="title-gradient">beste</span></span></div><div class="title-line"><span class="title-char"><span class="title-gradient">ir e</span></span></div></h1><p class="hero-subtitle">discord.gg/jymwvmDWS2 join discord</p><section class="quantum-player"><div class="player-hologram"><div class="player-core"><div class="player-header"><div class="player-icon"><i class="fas fa-headphones"></i></div><h2 class="player-title">QUANTUM PLAYER</h2></div><div class="now-playing"><div class="album-hologram"><i class="fas fa-music"></i></div><div class="track-info"><div class="track-title" id="currentTrack">QUANTUM SELECTION</div><div class="track-details"><span class="track-artist" id="currentArtist">ARTIN</span> <span id="currentDuration">--:--</span></div></div></div><div class="player-controls"><button class="control-orb" id="prevBtn"><i class="fas fa-step-backward"></i></button> <button class="control-orb play-orb" id="playBtn"><i class="fas fa-play" id="playIcon"></i></button> <button class="control-orb" id="nextBtn"><i class="fas fa-step-forward"></i></button></div><div class="progress-quantum"><div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div><div class="time-display-bar"><span id="currentTime">0:00</span> <span id="totalTime">0:00</span></div></div></div></div></section></main></div><div class="nexus-status" id="nexusStatus"><div class="status-content"><div class="ping-indicator"><div class="ping-dot"></div><span class="ping-value" id="pingValue">-- ms</span></div></div></div><a href="https://bridgerzan.github.io/library" class="nexus-library" target="_blank"><i class="fas fa-book"></i></a><script>// === QUANTUM INITIALIZATION ===
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeQuantumSystem();
+        });
+        function initializeQuantumSystem() {
+            createEnergyParticles();
+            initializeCursor();
+            initializeTime();
+            initializeMusicPlayer();
+            initializeStatus();
+            initializeAnimations();
+        }
+        function createEnergyParticles() {
+            const container = document.getElementById('energyParticles');
+            const particleCount = 60;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'energy-particle';
+                
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.width = `${Math.random() * 3 + 1}px`;
+                particle.style.height = particle.style.width;
+                
+                const colors = ['#7b2ff7', '#00f7ff', '#ff2b94'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particle.style.animationDelay = `${Math.random() * 20}s`;
+                particle.style.animationDuration = `${Math.random() * 30 + 20}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+        function initializeCursor() {
+            const cursor = document.querySelector('.quantum-cursor');
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                trail.style.opacity = '1';
+                document.body.appendChild(trail);
+                
+                setTimeout(() => {
+                    trail.style.opacity = '0';
+                    setTimeout(() => trail.remove(), 300);
+                }, 100);
+            });
+
+            function animateCursor() {
+                cursorX += (mouseX - cursorX - 4) * 0.1;
+                cursorY += (mouseY - cursorY - 4) * 0.1;
+                
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+            document.querySelectorAll('button, a, .control-orb, .nexus-status, .nexus-library').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'scale(2)';
+                    cursor.style.background = 'var(--nexus-accent)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'scale(1)';
+                    cursor.style.background = 'var(--nexus-secondary)';
+                });
+            });
+        }
+        function initializeTime() {
+            function updateTime() {
+                const now = new Date();
+                const iranTime = new Date(now.toLocaleString('en-US', {
+                    timeZone: 'Asia/Tehran'
+                }));
+                
+                const hours = iranTime.getHours().toString().padStart(2, '0');
+                const minutes = iranTime.getMinutes().toString().padStart(2, '0');
+                const seconds = iranTime.getSeconds().toString().padStart(2, '0');
+                
+                document.getElementById('nexusTime').textContent = `${hours}:${minutes}:${seconds}`;
+                
+                const dateStr = iranTime.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                document.getElementById('nexusDate').textContent = dateStr;
+            }
+            
+            updateTime();
+            setInterval(updateTime, 1000);
+        }
+
+        function initializeMusicPlayer() {
+            const playBtn = document.getElementById('playBtn');
+            const playIcon = document.getElementById('playIcon');
+            const progressBar = document.getElementById('progressBar');
+            const progressFill = document.getElementById('progressFill');
+            const currentTime = document.getElementById('currentTime');
+            const totalTime = document.getElementById('totalTime');
+            const currentTrack = document.getElementById('currentTrack');
+            const currentArtist = document.getElementById('currentArtist');
+            const currentDuration = document.getElementById('currentDuration');
+
+            const quantumLibrary = [
+                {
+                    title: "kos mali",
+                    artist: "idk",
+                    duration: "2:24",
+                    url: "https://abrehamrahi.ir/o/public/BqsxZD8J/" 
+                },
+            ];
+
+            let currentTrackIndex = 0;
+            let isPlaying = false;
+            let audio = new Audio();
+            let updateInterval;
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            }
+
+            function loadTrack(index) {
+                currentTrackIndex = index;
+                const track = quantumLibrary[index];
+                
+                if (!track.url || track.url.includes("YOUR_MP3_LINK")) {
+                    console.log(` Add your MP3 URL for: "${track.title}"`);
+                    return;
+                }
+                
+                audio.src = track.url;
+                
+                currentTrack.style.opacity = '0';
+                currentTrack.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    currentTrack.textContent = track.title;
+                    currentArtist.textContent = track.artist;
+                    currentDuration.textContent = track.duration;
+                    totalTime.textContent = track.duration;
+                    
+                    currentTrack.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    currentTrack.style.opacity = '1';
+                    currentTrack.style.transform = 'translateY(0)';
+                }, 300);
+                
+                audio.addEventListener('loadedmetadata', () => {
+                    totalTime.textContent = formatTime(audio.duration);
+                });
+                
+                progressFill.style.width = '0%';
+                currentTime.textContent = '0:00';
+                
+                if (isPlaying) {
+                    audio.play();
+                    playIcon.className = 'fas fa-pause';
+                }
+            }
+            function togglePlay() {
+                if (!audio.src) {
+                    loadTrack(0);
+                }
+                playBtn.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    playBtn.style.transform = 'scale(1.1)';
+                }, 100);
+                setTimeout(() => {
+                    playBtn.style.transform = 'scale(1)';
+                }, 200);
+                
+                if (isPlaying) {
+                    audio.pause();
+                    playIcon.className = 'fas fa-play';
+                    clearInterval(updateInterval);
+                } else {
+                    audio.play();
+                    playIcon.className = 'fas fa-pause';
+                    
+                    updateInterval = setInterval(() => {
+                        if (audio.duration) {
+                            const percent = (audio.currentTime / audio.duration) * 100;
+                            progressFill.style.width = `${percent}%`;
+                            currentTime.textContent = formatTime(audio.currentTime);
+                            
+                            if (audio.currentTime >= audio.duration) {
+                                nextTrack();
+                            }
+                        }
+                    }, 1000);
+                }
+                
+                isPlaying = !isPlaying;
+            }
+
+            function nextTrack() {
+                currentTrackIndex = (currentTrackIndex + 1) % quantumLibrary.length;
+                loadTrack(currentTrackIndex);
+                if (isPlaying) audio.play();
+            }
+
+            function prevTrack() {
+                currentTrackIndex = (currentTrackIndex - 1 + quantumLibrary.length) % quantumLibrary.length;
+                loadTrack(currentTrackIndex);
+                if (isPlaying) audio.play();
+            }
+
+            progressBar.addEventListener('click', (e) => {
+                if (!audio.duration) return;
+                
+                const rect = progressBar.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                audio.currentTime = percent * audio.duration;
+                progressFill.style.width = `${percent * 100}%`;
+                currentTime.textContent = formatTime(audio.currentTime);
+                
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.left = e.clientX - rect.left - 10 + 'px';
+                ripple.style.top = '50%';
+                ripple.style.transform = 'translateY(-50%)';
+                ripple.style.animation = 'ripple 0.6s linear forwards';
+                
+                progressBar.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    0% { transform: translateY(-50%) scale(0); opacity: 0.5; }
+                    100% { transform: translateY(-50%) scale(40); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            playBtn.addEventListener('click', togglePlay);
+            document.getElementById('nextBtn').addEventListener('click', nextTrack);
+            document.getElementById('prevBtn').addEventListener('click', prevTrack);
+            if (quantumLibrary.length > 0) {
+                loadTrack(0);
+            }
+
+
+            document.addEventListener('keydown', (e) => {
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        togglePlay();
+                        break;
+                    case 'ArrowRight':
+                        nextTrack();
+                        break;
+                    case 'ArrowLeft':
+                        prevTrack();
+                        break;
+                }
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden && isPlaying) {
+                    audio.play();
+                }
+            });
+        }
+
+        function initializeStatus() {
+            async function measurePing() {
+                const startTime = performance.now();
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 5000);
+                    
+                    await fetch('https://www.google.com/favicon.ico', {
+                        method: 'HEAD',
+                        mode: 'no-cors',
+                        cache: 'no-store',
+                        signal: controller.signal
+                    });
+                    
+                    clearTimeout(timeoutId);
+                    const endTime = performance.now();
+                    const ping = Math.round(endTime - startTime);
+                    
+                    const pingValue = document.getElementById('pingValue');
+                    pingValue.style.transform = 'scale(1.2)';
+                    pingValue.textContent = `${ping} ms`;
+                    
+                    setTimeout(() => {
+                        pingValue.style.transition = 'transform 0.3s ease';
+                        pingValue.style.transform = 'scale(1)';
+                    }, 100);
+                    
+                    const status = document.getElementById('nexusStatus');
+                    if (ping < 50) {
+                        status.style.borderColor = 'rgba(0, 247, 255, 0.3)';
+                    } else if (ping < 150) {
+                        status.style.borderColor = 'rgba(255, 209, 102, 0.3)';
+                    } else {
+                        status.style.borderColor = 'rgba(255, 43, 148, 0.3)';
+                    }
+                } catch (error) {
+                    document.getElementById('pingValue').textContent = 'OFFLINE';
+                }
+            }
+            
+            setTimeout(measurePing, 1000);
+            document.getElementById('nexusStatus').addEventListener('click', measurePing);
+        }
+
+        function initializeAnimations() {
+            const titleChars = document.querySelectorAll('.title-char');
+            titleChars.forEach((char, index) => {
+                setTimeout(() => {
+                    char.style.animationPlayState = 'running';
+                }, index * 300);
+            });
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 1.2s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 200);
+            
+            console.log(' ARTIN on TOP');
+            console.log(' discord.gg/jymwvmDWS2');
+        }</script></body></html>
