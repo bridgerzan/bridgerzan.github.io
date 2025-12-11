@@ -1,0 +1,607 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Artin Webhook Manager</title><style>:root{--primary:#7b2ff7;--primary-dark:#5a1bd6;--primary-light:#9d5ff9;--secondary:#00f7ff;--secondary-dark:#00c4cc;--accent:#ff2b94;--accent-light:#ff5aa9;--gold:#ffd166;--text:#e0e0e0;--text-secondary:#a0a0c0;--bg-dark:#050510;--bg-card:#0a0a1a;--bg-hover:#0f0f24;--border:rgba(123, 47, 247, 0.3);--border-light:rgba(123, 47, 247, 0.1);--shadow-glow:0 0 40px rgba(123, 47, 247, 0.3);--shadow-heavy:0 20px 60px rgba(0, 0, 0, 0.5)}*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,-apple-system,sans-serif}body{background:var(--bg-dark);color:var(--text);min-height:100vh;background-image:radial-gradient(circle at 10% 20%,rgba(123,47,247,.1) 0,transparent 40%),radial-gradient(circle at 90% 80%,rgba(0,247,255,.1) 0,transparent 40%)}.container{max-width:1600px;margin:0 auto;padding:30px}.header{text-align:center;margin-bottom:40px;padding:40px;background:rgba(10,10,26,.8);border-radius:24px;border:1px solid var(--border);backdrop-filter:blur(20px);position:relative;overflow:hidden}.header::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--secondary),transparent);animation:scanline 4s linear infinite}@keyframes scanline{0%{left:-100%}100%{left:100%}}h1{font-size:3.5rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:15px;letter-spacing:-1px}.tagline{font-size:1.2rem;color:var(--text-secondary);font-weight:300}.main-grid{display:grid;grid-template-columns:350px 1fr;gap:30px}.sidebar{display:flex;flex-direction:column;gap:25px}.card{background:rgba(10,10,26,.8);border-radius:20px;padding:25px;border:1px solid var(--border);backdrop-filter:blur(20px);transition:all .3s ease}.card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:var(--shadow-glow)}.card-title{font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:20px;padding-bottom:15px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:12px}.card-title::before{content:'';width:8px;height:8px;background:var(--primary);border-radius:50%;display:block}.input-group{margin-bottom:20px}.input-label{display:block;color:var(--text-secondary);margin-bottom:10px;font-size:.9rem;font-weight:500}.form-input{width:100%;padding:15px 18px;background:rgba(5,5,16,.7);border:1px solid var(--border-light);border-radius:12px;color:var(--text);font-size:14px;transition:all .3s ease}.form-input:focus{outline:0;border-color:var(--primary);box-shadow:0 0 0 3px rgba(123,47,247,.1)}.form-textarea{min-height:120px;resize:vertical}.webhook-list{max-height:300px;overflow-y:auto;margin-bottom:20px}.webhook-item{background:rgba(5,5,16,.7);border:1px solid var(--border-light);border-radius:12px;padding:18px;margin-bottom:12px;transition:all .3s ease;cursor:pointer}.webhook-item:hover{border-color:var(--primary);background:rgba(123,47,247,.05)}.webhook-item.active{border-color:var(--secondary);background:rgba(0,247,255,.05)}.webhook-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.webhook-name{font-weight:600;color:var(--text);font-size:1rem}.webhook-status{width:10px;height:10px;border-radius:50%;background:var(--secondary)}.webhook-status.inactive{background:#ff4757}.webhook-url{font-size:12px;color:var(--text-secondary);font-family:monospace;overflow:hidden;text-overflow:ellipsis;margin-bottom:8px}.webhook-stats{display:flex;gap:15px;font-size:12px}.stat-success{color:var(--secondary)}.stat-fail{color:var(--accent)}.btn{padding:14px 24px;border:none;border-radius:12px;font-weight:600;font-size:15px;cursor:pointer;transition:all .3s ease;display:flex;align-items:center;justify-content:center;gap:10px}.btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff}.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}.btn-secondary{background:linear-gradient(135deg,var(--secondary),var(--secondary-dark));color:var(--bg-dark);font-weight:700}.btn-secondary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(0,247,255,.3)}.btn-danger{background:linear-gradient(135deg,var(--accent),#d91a72);color:#fff}.btn-danger:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(255,43,148,.3)}.btn-group{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}.action-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:25px 0}.tab-container{background:rgba(10,10,26,.8);border-radius:20px;border:1px solid var(--border);overflow:hidden}.tabs{display:flex;background:rgba(5,5,16,.7);border-bottom:1px solid var(--border)}.tab{padding:18px 30px;background:0 0;border:none;color:var(--text-secondary);font-weight:600;cursor:pointer;transition:all .3s ease;position:relative;flex:1;text-align:center}.tab:hover{color:var(--text);background:rgba(123,47,247,.05)}.tab.active{color:var(--primary);background:rgba(10,10,26,.8)}.tab.active::after{content:'';position:absolute;bottom:-1px;left:0;width:100%;height:3px;background:var(--primary)}.tab-content{padding:30px;display:none}.tab-content.active{display:block;animation:fadeIn .5s ease}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.embed-builder{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.embed-preview{background:#1e1e2e;border-radius:12px;padding:25px;border-left:4px solid var(--primary);margin-top:20px;font-family:'Segoe UI',sans-serif}.embed-title{font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:10px}.embed-description{color:#b4b4d6;line-height:1.6;margin-bottom:15px}.embed-footer{font-size:12px;color:#8a8ab5;margin-top:15px;padding-top:10px;border-top:1px solid #2d2d42}.test-results{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:20px}.test-result-card{background:rgba(5,5,16,.7);border-radius:12px;padding:20px;border:1px solid var(--border-light)}.test-success{border-color:var(--secondary);background:rgba(0,247,255,.05)}.test-failed{border-color:var(--accent);background:rgba(255,43,148,.05)}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:30px}.stat-card{background:rgba(10,10,26,.8);border-radius:16px;padding:25px;text-align:center;border:1px solid var(--border);transition:all .3s ease}.stat-card:hover{transform:translateY(-5px);border-color:var(--primary)}.stat-value{font-size:2.8rem;font-weight:900;margin-bottom:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent}.stat-label{font-size:.9rem;color:var(--text-secondary);font-weight:500}.webhook-info-panel{background:rgba(5,5,16,.7);border-radius:12px;padding:20px;margin-top:20px;border:1px solid var(--border)}.info-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border-light)}.info-label{color:var(--text-secondary);font-weight:500}.info-value{color:var(--text);font-family:monospace;font-size:14px}.quick-tools{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}.tool-btn{padding:10px 18px;background:rgba(5,5,16,.5);border:1px solid var(--border-light);border-radius:8px;color:var(--text-secondary);cursor:pointer;transition:all .3s ease;font-weight:500}.tool-btn:hover{background:rgba(123,47,247,.1);color:var(--text);border-color:var(--primary)}.progress-container{margin:25px 0}.progress-header{display:flex;justify-content:space-between;margin-bottom:12px}.progress-bar{width:100%;height:8px;background:rgba(5,5,16,.7);border-radius:4px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--secondary));border-radius:4px;width:0%;transition:width .5s ease}.terminal{background:rgba(5,5,16,.9);border-radius:12px;padding:25px;font-family:monospace;font-size:14px;line-height:1.8;max-height:250px;overflow-y:auto;border:1px solid var(--border)}.terminal-line{margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.05)}.terminal-success{color:var(--secondary)}.terminal-error{color:var(--accent)}.notification{position:fixed;top:30px;right:30px;padding:20px 25px;background:rgba(10,10,26,.95);border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow-heavy);transform:translateX(150%);transition:transform .6s cubic-bezier(.34,1.56,.64,1);z-index:1000;max-width:350px;backdrop-filter:blur(20px);border-left:5px solid var(--primary)}.notification.show{transform:translateX(0)}.notification.success{border-left-color:var(--secondary)}.notification.error{border-left-color:var(--accent)}.notification.warning{border-left-color:var(--gold)}.notification-title{font-weight:700;margin-bottom:8px;color:var(--text)}.notification-message{color:var(--text-secondary);line-height:1.6}@media (max-width:1400px){.main-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}}@media (max-width:768px){.container{padding:20px}.action-buttons{grid-template-columns:repeat(2,1fr)}.embed-builder{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr}h1{font-size:2.5rem}}</style><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></head><body><div class="container"><div class="header"><h1>Artin Webhook Manager</h1><p class="tagline">Advanced Discord Webhook Management with Full Control</p></div><div class="main-grid"><div class="sidebar"><div class="card"><div class="card-title">Webhook Management</div><div class="input-group"><div class="input-label">Add New Webhook</div><input type="text" class="form-input" id="newWebhook" placeholder="https://discord.com/api/webhooks/..."></div><button class="btn btn-secondary" onclick="addWebhook()" style="margin-bottom:20px">Add Webhook</button><div class="webhook-list" id="webhookList"></div><div class="btn-group"><button class="btn btn-primary" onclick="testWebhook()">Test Selected</button> <button class="btn btn-danger" onclick="deleteSelected()">Delete Selected</button></div></div><div class="card"><div class="card-title">Spam Configuration</div><div class="input-group"><div class="input-label">Message Count: <span id="countValue">100</span></div><input type="range" class="form-input" id="messageCount" min="10" max="1000" value="100" oninput="document.getElementById(&#34;countValue&#34;).textContent=this.value"></div><div class="input-group"><div class="input-label">Delay (ms): <span id="delayValue">100</span></div><input type="range" class="form-input" id="delay" min="10" max="2000" value="100" oninput="document.getElementById(&#34;delayValue&#34;).textContent=this.value"></div><div class="input-group"><div class="input-label">Thread Count: <span id="threadValue">5</span></div><input type="range" class="form-input" id="threadCount" min="1" max="20" value="5" oninput="document.getElementById(&#34;threadValue&#34;).textContent=this.value"></div></div><div class="card"><div class="card-title">Message Settings</div><div class="input-group"><div class="input-label">Custom Username</div><input type="text" class="form-input" id="username" placeholder="Optional"></div><div class="input-group"><div class="input-label">Avatar URL</div><input type="text" class="form-input" id="avatarUrl" placeholder="https://example.com/avatar.png"></div><div class="quick-tools"><div class="tool-btn" onclick="insertText(&#34;@everyone&#34;)">@everyone</div><div class="tool-btn" onclick="insertText(&#34;@here&#34;)">@here</div><div class="tool-btn" onclick="insertText(&#34;📢&#34;)">Announce</div><div class="tool-btn" onclick="clearMessage()">Clear</div></div></div></div><div class="content-area"><div class="tab-container"><div class="tabs"><div class="tab active" onclick="switchTab(&#34;message&#34;)">Message</div><div class="tab" onclick="switchTab(&#34;embed&#34;)">Embed Builder</div><div class="tab" onclick="switchTab(&#34;test&#34;)">Test Webhook</div><div class="tab" onclick="switchTab(&#34;info&#34;)">Webhook Info</div></div><div id="messageTab" class="tab-content active"><div class="input-group"><div class="input-label">Message Content</div><textarea class="form-input form-textarea" id="messageContent" placeholder="Type your message here..." rows="6"></textarea></div><div class="action-buttons"><button class="btn btn-primary" onclick="sendMessage()">Send Message</button> <button class="btn btn-secondary" onclick="startSpam()" id="spamBtn">Start Spam</button> <button class="btn btn-danger" onclick="stopSpam()" id="stopBtn" disabled>Stop Spam</button> <button class="btn btn-danger" onclick="nukeWebhooks()">Nuke All</button></div><div class="progress-container"><div class="progress-header"><span>Operation Progress</span> <span id="progressPercent">0%</span></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div></div><div id="embedTab" class="tab-content"><div class="embed-builder"><div class="input-group"><div class="input-label">Embed Title</div><input type="text" class="form-input" id="embedTitle" placeholder="Title"></div><div class="input-group"><div class="input-label">Color</div><input type="color" class="form-input" id="embedColor" value="#7b2ff7"></div><div class="input-group" style="grid-column:span 2"><div class="input-label">Description</div><textarea class="form-input form-textarea" id="embedDescription" placeholder="Description content..." rows="3"></textarea></div><div class="input-group"><div class="input-label">Footer Text</div><input type="text" class="form-input" id="embedFooter" placeholder="Footer"></div><div class="input-group"><div class="input-label">Author Name</div><input type="text" class="form-input" id="embedAuthor" placeholder="Author"></div></div><div class="embed-preview" id="embedPreview"><div style="color:#8a8ab5">Embed preview will appear here...</div></div><button class="btn btn-primary" onclick="useEmbed()" style="margin-top:20px">Use This Embed</button></div><div id="testTab" class="tab-content"><div class="input-group"><div class="input-label">Test Message</div><textarea class="form-input form-textarea" id="testMessage" placeholder="Message to test with..." rows="3">Test message from Artin Webhook Manager</textarea></div><button class="btn btn-primary" onclick="runTest()" style="margin-bottom:20px">Run Test</button><div class="test-results" id="testResults"></div></div><div id="infoTab" class="tab-content"><div class="webhook-info-panel" id="webhookInfo"><div style="color:#8a8ab5;text-align:center;padding:40px">Select a webhook from the list to view its information</div></div></div></div><div class="stats-grid" style="margin-top:30px"><div class="stat-card"><div class="stat-value" id="totalSent">0</div><div class="stat-label">Messages Sent</div></div><div class="stat-card"><div class="stat-value" id="totalFailed">0</div><div class="stat-label">Failed</div></div><div class="stat-card"><div class="stat-value" id="sendSpeed">0</div><div class="stat-label">Msg/Sec</div></div><div class="stat-card"><div class="stat-value" id="activeCount">0</div><div class="stat-label">Active Webhooks</div></div></div><div class="card" style="margin-top:30px"><div class="card-title">System Terminal</div><div class="terminal" id="terminal"><div class="terminal-line">[00:00:00] System initialized...</div><div class="terminal-line">[00:00:00] Ready to send messages</div></div></div></div></div></div><div class="notification" id="notification"><div class="notification-title" id="notificationTitle">Notification</div><div class="notification-message" id="notificationMessage">Message content</div></div><script>let webhooks = [];
+        let selectedWebhook = null;
+        let spamming = false;
+        let stats = {
+            sent: 0,
+            failed: 0,
+            startTime: null
+        };
+
+        function addWebhook() {
+            const url = document.getElementById('newWebhook').value.trim();
+            if (!url) return showNotification('Error', 'Please enter a webhook URL', 'error');
+            
+            if (!url.match(/^https:\/\/discord\.com\/api\/webhooks\/\d+\/[\w-]+$/)) {
+                return showNotification('Error', 'Invalid Discord webhook URL', 'error');
+            }
+            
+            const webhook = {
+                url: url,
+                active: true,
+                name: `Webhook ${webhooks.length + 1}`,
+                id: Date.now(),
+                stats: { success: 0, fail: 0 },
+                lastUsed: null,
+                added: new Date().toISOString()
+            };
+            
+            webhooks.push(webhook);
+            document.getElementById('newWebhook').value = '';
+            updateWebhookList();
+            selectWebhook(webhook);
+            logTerminal(`Webhook added: ${url.substring(0, 50)}...`);
+            showNotification('Success', 'Webhook added successfully', 'success');
+        }
+
+        function updateWebhookList() {
+            const list = document.getElementById('webhookList');
+            list.innerHTML = '';
+            
+            let activeCount = 0;
+            
+            webhooks.forEach((webhook, index) => {
+                if (webhook.active) activeCount++;
+                
+                const item = document.createElement('div');
+                item.className = `webhook-item ${selectedWebhook === webhook ? 'active' : ''}`;
+                item.onclick = () => selectWebhook(webhook);
+                item.innerHTML = `
+                    <div class="webhook-header">
+                        <div class="webhook-name">${webhook.name}</div>
+                        <div class="webhook-status ${webhook.active ? '' : 'inactive'}"></div>
+                    </div>
+                    <div class="webhook-url">${webhook.url}</div>
+                    <div class="webhook-stats">
+                        <span class="stat-success">✓ ${webhook.stats.success}</span>
+                        <span class="stat-fail">✗ ${webhook.stats.fail}</span>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+            
+            document.getElementById('activeCount').textContent = activeCount;
+            updateStats();
+        }
+
+        function selectWebhook(webhook) {
+            selectedWebhook = webhook;
+            updateWebhookList();
+            updateWebhookInfo();
+        }
+
+        function updateWebhookInfo() {
+            if (!selectedWebhook) return;
+            
+            const infoPanel = document.getElementById('webhookInfo');
+            const date = new Date(selectedWebhook.added);
+            
+            infoPanel.innerHTML = `
+                <div class="info-row">
+                    <span class="info-label">Name:</span>
+                    <span class="info-value">${selectedWebhook.name}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">URL:</span>
+                    <span class="info-value" style="word-break: break-all;">${selectedWebhook.url}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Status:</span>
+                    <span class="info-value" style="color: ${selectedWebhook.active ? '#00f7ff' : '#ff4757'}">
+                        ${selectedWebhook.active ? 'Active' : 'Inactive'}
+                    </span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Added:</span>
+                    <span class="info-value">${date.toLocaleString()}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Last Used:</span>
+                    <span class="info-value">${selectedWebhook.lastUsed ? new Date(selectedWebhook.lastUsed).toLocaleString() : 'Never'}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Success Rate:</span>
+                    <span class="info-value">
+                        ${selectedWebhook.stats.success + selectedWebhook.stats.fail > 0 
+                            ? Math.round((selectedWebhook.stats.success / (selectedWebhook.stats.success + selectedWebhook.stats.fail)) * 100) + '%'
+                            : '0%'}
+                    </span>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px;">
+                    <button class="btn btn-primary" onclick="toggleWebhookActive()">
+                        ${selectedWebhook.active ? 'Disable' : 'Enable'}
+                    </button>
+                    <button class="btn btn-danger" onclick="removeSelectedWebhook()">
+                        Remove
+                    </button>
+                </div>
+            `;
+        }
+
+        function toggleWebhookActive() {
+            if (!selectedWebhook) return;
+            selectedWebhook.active = !selectedWebhook.active;
+            updateWebhookList();
+            updateWebhookInfo();
+            logTerminal(`Webhook ${selectedWebhook.active ? 'enabled' : 'disabled'}`);
+        }
+
+        function removeSelectedWebhook() {
+            if (!selectedWebhook) return;
+            if (!confirm(`Remove webhook "${selectedWebhook.name}"?`)) return;
+            
+            const index = webhooks.indexOf(selectedWebhook);
+            webhooks.splice(index, 1);
+            selectedWebhook = null;
+            updateWebhookList();
+            document.getElementById('webhookInfo').innerHTML = `
+                <div style="color: #8a8ab5; text-align: center; padding: 40px;">
+                    Select a webhook from the list to view its information
+                </div>
+            `;
+            showNotification('Success', 'Webhook removed', 'success');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName + 'Tab').classList.add('active');
+            
+            if (tabName === 'embed') {
+                updateEmbedPreview();
+            }
+        }
+
+        function insertText(text) {
+            const textarea = document.getElementById('messageContent');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            textarea.value = textarea.value.substring(0, start) + text + textarea.value.substring(end);
+            textarea.focus();
+            textarea.selectionStart = textarea.selectionEnd = start + text.length;
+        }
+
+        function clearMessage() {
+            document.getElementById('messageContent').value = '';
+        }
+
+        function updateEmbedPreview() {
+            const preview = document.getElementById('embedPreview');
+            const title = document.getElementById('embedTitle').value;
+            const description = document.getElementById('embedDescription').value;
+            const color = document.getElementById('embedColor').value;
+            const footer = document.getElementById('embedFooter').value;
+            const author = document.getElementById('embedAuthor').value;
+            
+            let html = '';
+            
+            if (author) {
+                html += `<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                    <div style="width: 40px; height: 40px; background: ${color}; border-radius: 50%;"></div>
+                    <div>
+                        <div style="font-weight: 600; color: #fff;">${author}</div>
+                        <div style="font-size: 12px; color: #b4b4d6;">Today at ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                    </div>
+                </div>`;
+            }
+            
+            if (title) {
+                html += `<div class="embed-title">${title}</div>`;
+            }
+            
+            if (description) {
+                html += `<div class="embed-description">${description}</div>`;
+            }
+            
+            if (footer) {
+                html += `<div class="embed-footer">${footer}</div>`;
+            }
+            
+            preview.innerHTML = html || '<div style="color: #8a8ab5;">Configure embed settings above...</div>';
+        }
+
+        function useEmbed() {
+            document.getElementById('messageContent').value = '';
+            showNotification('Success', 'Embed will be used for next message', 'success');
+        }
+
+        async function sendMessage() {
+            const activeWebhooks = webhooks.filter(w => w.active);
+            if (activeWebhooks.length === 0) {
+                return showNotification('Error', 'No active webhooks', 'error');
+            }
+            
+            const useEmbed = document.getElementById('embedTitle').value || 
+                           document.getElementById('embedDescription').value;
+            
+            let payload = {};
+            const username = document.getElementById('username').value;
+            const avatarUrl = document.getElementById('avatarUrl').value;
+            
+            if (username) payload.username = username;
+            if (avatarUrl) payload.avatar_url = avatarUrl;
+            
+            if (useEmbed) {
+                const embed = {
+                    title: document.getElementById('embedTitle').value || undefined,
+                    description: document.getElementById('embedDescription').value || undefined,
+                    color: parseInt(document.getElementById('embedColor').value.slice(1), 16),
+                    timestamp: new Date().toISOString(),
+                    footer: document.getElementById('embedFooter').value ? {
+                        text: document.getElementById('embedFooter').value
+                    } : undefined,
+                    author: document.getElementById('embedAuthor').value ? {
+                        name: document.getElementById('embedAuthor').value
+                    } : undefined
+                };
+                payload.embeds = [embed];
+            } else {
+                const message = document.getElementById('messageContent').value;
+                if (!message.trim()) {
+                    return showNotification('Error', 'Please enter a message', 'error');
+                }
+                payload.content = message;
+            }
+            
+            logTerminal(`Sending message to ${activeWebhooks.length} webhook(s)...`);
+            
+            let success = 0;
+            let failed = 0;
+            
+            for (let i = 0; i < activeWebhooks.length; i++) {
+                const webhook = activeWebhooks[i];
+                
+                try {
+                    const response = await fetch(webhook.url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (response.ok) {
+                        success++;
+                        webhook.stats.success++;
+                        webhook.lastUsed = new Date().toISOString();
+                        stats.sent++;
+                        logTerminal(`✓ Sent to ${webhook.name}`, 'success');
+                    } else {
+                        failed++;
+                        webhook.stats.fail++;
+                        stats.failed++;
+                        logTerminal(`✗ Failed: ${response.status}`, 'error');
+                    }
+                } catch (error) {
+                    failed++;
+                    webhook.stats.fail++;
+                    stats.failed++;
+                    logTerminal(`✗ Error: ${error.message}`, 'error');
+                }
+                
+                updateProgress((i + 1) / activeWebhooks.length * 100);
+                updateWebhookList();
+                updateStats();
+            }
+            
+            updateProgress(0);
+            logTerminal(`Completed: ${success} sent, ${failed} failed`);
+            showNotification('Success', `${success} sent, ${failed} failed`, success > 0 ? 'success' : 'error');
+        }
+
+        function startSpam() {
+            if (spamming) return;
+            
+            const activeWebhooks = webhooks.filter(w => w.active);
+            if (activeWebhooks.length === 0) {
+                return showNotification('Error', 'No active webhooks', 'error');
+            }
+            
+            const messageCount = parseInt(document.getElementById('messageCount').value);
+            const delay = parseInt(document.getElementById('delay').value);
+            const threadCount = parseInt(document.getElementById('threadCount').value);
+            const message = document.getElementById('messageContent').value || 'SPAM';
+            const username = document.getElementById('username').value;
+            
+            spamming = true;
+            stats.startTime = Date.now();
+            stats.sent = 0;
+            stats.failed = 0;
+            
+            document.getElementById('spamBtn').disabled = true;
+            document.getElementById('stopBtn').disabled = false;
+            
+            logTerminal(`Starting spam with ${messageCount} messages`);
+            showNotification('Spam Started', `Sending ${messageCount} messages`, 'success');
+            
+            const totalOperations = messageCount * activeWebhooks.length;
+            let completed = 0;
+            
+            async function spamWorker(workerId) {
+                while (spamming && completed < totalOperations) {
+                    for (const webhook of activeWebhooks) {
+                        if (!spamming || completed >= totalOperations) break;
+                        
+                        const payload = {
+                            content: message + ' #' + (completed + 1),
+                            username: username || `Spammer-${workerId}`
+                        };
+                        
+                        try {
+                            await fetch(webhook.url, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(payload)
+                            });
+                            stats.sent++;
+                            webhook.stats.success++;
+                            webhook.lastUsed = new Date().toISOString();
+                        } catch (error) {
+                            stats.failed++;
+                            webhook.stats.fail++;
+                        }
+                        
+                        completed++;
+                        updateProgress((completed / totalOperations) * 100);
+                        updateStats();
+                        updateWebhookList();
+                        
+                        await sleep(delay);
+                    }
+                }
+            }
+            
+            for (let i = 0; i < threadCount; i++) {
+                spamWorker(i + 1);
+            }
+        }
+
+        function stopSpam() {
+            spamming = false;
+            document.getElementById('spamBtn').disabled = false;
+            document.getElementById('stopBtn').disabled = true;
+            updateProgress(0);
+            
+            logTerminal(`Spam stopped: ${stats.sent} sent, ${stats.failed} failed`);
+            showNotification('Stopped', `${stats.sent} sent, ${stats.failed} failed`, 'warning');
+        }
+
+        async function testWebhook() {
+            if (!selectedWebhook) {
+                return showNotification('Error', 'Please select a webhook first', 'error');
+            }
+            
+            logTerminal(`Testing ${selectedWebhook.name}...`);
+            
+            try {
+                const response = await fetch(selectedWebhook.url, { method: 'HEAD' });
+                
+                if (response.ok) {
+                    selectedWebhook.stats.success++;
+                    logTerminal(`✓ ${selectedWebhook.name} is working`, 'success');
+                    showNotification('Success', 'Webhook is working', 'success');
+                } else {
+                    selectedWebhook.stats.fail++;
+                    logTerminal(`✗ ${selectedWebhook.name}: ${response.status}`, 'error');
+                    showNotification('Warning', `Status: ${response.status}`, 'warning');
+                }
+            } catch (error) {
+                selectedWebhook.stats.fail++;
+                logTerminal(`✗ ${selectedWebhook.name}: Connection failed`, 'error');
+                showNotification('Error', 'Connection failed', 'error');
+            }
+            
+            updateWebhookList();
+            updateWebhookInfo();
+        }
+
+        async function runTest() {
+            const testResults = document.getElementById('testResults');
+            testResults.innerHTML = '';
+            
+            const activeWebhooks = webhooks.filter(w => w.active);
+            if (activeWebhooks.length === 0) {
+                return showNotification('Error', 'No active webhooks', 'error');
+            }
+            
+            const testMessage = document.getElementById('testMessage').value;
+            
+            logTerminal(`Running tests on ${activeWebhooks.length} webhook(s)...`);
+            
+            for (const webhook of activeWebhooks) {
+                const resultCard = document.createElement('div');
+                resultCard.className = 'test-result-card';
+                resultCard.innerHTML = `
+                    <div style="font-weight: 600; margin-bottom: 10px;">${webhook.name}</div>
+                    <div style="font-size: 12px; color: #8a8ab5; margin-bottom: 10px;">Testing...</div>
+                `;
+                testResults.appendChild(resultCard);
+                
+                try {
+                    const response = await fetch(webhook.url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ content: testMessage })
+                    });
+                    
+                    if (response.ok) {
+                        webhook.stats.success++;
+                        resultCard.classList.add('test-success');
+                        resultCard.innerHTML = `
+                            <div style="font-weight: 600; margin-bottom: 10px;">${webhook.name}</div>
+                            <div style="color: #00f7ff; font-size: 12px; margin-bottom: 10px;">✓ Success</div>
+                            <div style="font-size: 11px; color: #8a8ab5;">Status: ${response.status}</div>
+                        `;
+                    } else {
+                        webhook.stats.fail++;
+                        resultCard.classList.add('test-failed');
+                        resultCard.innerHTML = `
+                            <div style="font-weight: 600; margin-bottom: 10px;">${webhook.name}</div>
+                            <div style="color: #ff2b94; font-size: 12px; margin-bottom: 10px;">✗ Failed</div>
+                            <div style="font-size: 11px; color: #8a8ab5;">Status: ${response.status}</div>
+                        `;
+                    }
+                } catch (error) {
+                    webhook.stats.fail++;
+                    resultCard.classList.add('test-failed');
+                    resultCard.innerHTML = `
+                        <div style="font-weight: 600; margin-bottom: 10px;">${webhook.name}</div>
+                        <div style="color: #ff2b94; font-size: 12px; margin-bottom: 10px;">✗ Error</div>
+                        <div style="font-size: 11px; color: #8a8ab5;">${error.message}</div>
+                    `;
+                }
+                
+                updateWebhookList();
+            }
+            
+            showNotification('Tests Complete', `${activeWebhooks.length} webhooks tested`, 'success');
+        }
+
+        function deleteSelected() {
+            const activeWebhooks = webhooks.filter(w => w.active);
+            if (activeWebhooks.length === 0) {
+                return showNotification('Error', 'No active webhooks', 'error');
+            }
+            
+            if (!confirm(`Delete ${activeWebhooks.length} active webhooks?`)) return;
+            
+            logTerminal(`Deleting ${activeWebhooks.length} webhook(s)...`);
+            
+            activeWebhooks.forEach(webhook => {
+                fetch(webhook.url, { method: 'DELETE' })
+                    .then(() => {
+                        logTerminal(`✓ Deleted: ${webhook.name}`, 'success');
+                    })
+                    .catch(() => {
+                        logTerminal(`✗ Failed: ${webhook.name}`, 'error');
+                    });
+            });
+            
+            webhooks = webhooks.filter(w => !w.active);
+            if (selectedWebhook && !selectedWebhook.active) {
+                selectedWebhook = null;
+                document.getElementById('webhookInfo').innerHTML = `
+                    <div style="color: #8a8ab5; text-align: center; padding: 40px;">
+                        Select a webhook from the list to view its information
+                    </div>
+                `;
+            }
+            updateWebhookList();
+            showNotification('Deleted', `${activeWebhooks.length} webhooks deleted`, 'success');
+        }
+
+        function nukeWebhooks() {
+            const activeWebhooks = webhooks.filter(w => w.active);
+            if (activeWebhooks.length === 0) {
+                return showNotification('Error', 'No active webhooks', 'error');
+            }
+            
+            if (!confirm(`NUKE ${activeWebhooks.length} webhooks? This will spam then delete them.`)) return;
+            
+            logTerminal(`NUKE sequence initiated...`, 'error');
+            showNotification('NUKE Started', `Destroying ${activeWebhooks.length} webhooks`, 'error');
+            
+            activeWebhooks.forEach((webhook, index) => {
+                setTimeout(async () => {
+                    for (let i = 0; i < 10; i++) {
+                        try {
+                            await fetch(webhook.url, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    content: `💥 NUKE ${i + 1}/10 💥`
+                                })
+                            });
+                            await sleep(100);
+                        } catch {}
+                    }
+                    
+                    try {
+                        await fetch(webhook.url, { method: 'DELETE' });
+                        logTerminal(`✓ NUKE complete: ${webhook.name}`, 'success');
+                    } catch {
+                        logTerminal(`✗ NUKE failed: ${webhook.name}`, 'error');
+                    }
+                }, index * 1000);
+            });
+            
+            webhooks = webhooks.filter(w => !w.active);
+            selectedWebhook = null;
+            
+            setTimeout(() => {
+                updateWebhookList();
+                document.getElementById('webhookInfo').innerHTML = `
+                    <div style="color: #8a8ab5; text-align: center; padding: 40px;">
+                        Select a webhook from the list to view its information
+                    </div>
+                `;
+                showNotification('NUKE Complete', 'All webhooks destroyed', 'success');
+            }, activeWebhooks.length * 1500);
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function updateProgress(percent) {
+            document.getElementById('progressFill').style.width = `${percent}%`;
+            document.getElementById('progressPercent').textContent = `${Math.round(percent)}%`;
+        }
+
+        function updateStats() {
+            document.getElementById('totalSent').textContent = stats.sent;
+            document.getElementById('totalFailed').textContent = stats.failed;
+            
+            if (stats.startTime) {
+                const elapsed = (Date.now() - stats.startTime) / 1000;
+                if (elapsed > 0) {
+                    const speed = (stats.sent / elapsed).toFixed(1);
+                    document.getElementById('sendSpeed').textContent = speed;
+                }
+            }
+        }
+
+        function logTerminal(message, type = '') {
+            const terminal = document.getElementById('terminal');
+            const time = new Date().toLocaleTimeString([], {hour12: false});
+            
+            const line = document.createElement('div');
+            line.className = `terminal-line ${type}`;
+            line.innerHTML = `<span style="color: #8a8ab5;">[${time}]</span> ${message}`;
+            
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function showNotification(title, message, type = '') {
+            const notification = document.getElementById('notification');
+            document.getElementById('notificationTitle').textContent = title;
+            document.getElementById('notificationMessage').textContent = message;
+            
+            notification.className = `notification ${type} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const embedInputs = ['embedTitle', 'embedDescription', 'embedColor', 'embedFooter', 'embedAuthor'];
+            embedInputs.forEach(id => {
+                document.getElementById(id).addEventListener('input', updateEmbedPreview);
+            });
+            
+            const savedWebhooks = localStorage.getItem('artinWebhooks');
+            if (savedWebhooks) {
+                try {
+                    webhooks = JSON.parse(savedWebhooks);
+                    if (webhooks.length > 0) {
+                        selectWebhook(webhooks[0]);
+                    }
+                    updateWebhookList();
+                } catch (e) {}
+            }
+            
+            setInterval(() => {
+                localStorage.setItem('artinWebhooks', JSON.stringify(webhooks));
+            }, 5000);
+        });</script></body></html>
